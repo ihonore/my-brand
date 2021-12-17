@@ -1,0 +1,239 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: poppins;
+    background-color: rgba(102, 252, 241, 0.5);
+}
+
+.hero-image{
+    background-image: linear-gradient(
+        rgba(14, 11, 22, 0.5), rgba(0,0,0,0.9)), 
+    url("/img/banner-image-.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image .hero-text{
+    color: #fff;
+    text-align: center;
+}
+
+.hero-image .hero-text h1{
+    color: #66FCF1;
+    font-family:'OCR A Extended';
+    letter-spacing: 8px;
+    font-family: OCR A Extended;
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.hero-image .hero-text p{
+    font-size: 30px;
+    line-height: 10px;
+    font-family: "Lucida Sans Typewriter";
+    font-style: oblique;
+}
+.hero-image .hero-text img{
+    width: 100px;
+    height: 100px;
+
+}
+.hero-image .hero-btn{
+    background-color: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    padding: 10px 30px;
+    border: solid 3px #66FCF1;
+    border-radius: 10px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.hero-image .hero-btn:hover{
+    background: #fff;
+    color: #000;
+}
+nav{
+    background: #0082e6;
+    height: 80px;
+    width: 100%;
+}
+nav ul{
+    float: right;
+    margin-right: 20px;
+}
+nav ul li{
+    list-style: none;
+    display: inline-block;
+    padding-bottom: 0;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: white;
+    font-family: poppins;
+    font-weight: 500;
+    font-size: 17px;
+    letter-spacing: 2px;
+    border-radius: 3px;
+    text-decoration: none;
+    padding: 7px 10px;
+          
+}
+a.active,a:hover{
+    background: #1b9bff;
+    transition: .5s;
+  }
+.contacts-div{
+    height: 700px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.contacts-div h1{
+    text-align: center;
+    margin-top: 40px;
+    font-weight: 700;
+    font-size: 45px;
+}
+.contacts-div h1 .get{
+    color:rgba(31, 40, 51, 0.65);
+}
+.contacts-div h1 .in-touch{
+    color: rgba(205, 58, 197, 1);
+}
+
+.contacts-container{
+    display: flex;
+    justify-content: space-evenly;
+}
+.right-contacts{
+    width:400px;
+    height: 450px;
+    background-color: #193751;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    line-height:45px;
+}
+.left-contacts{
+  margin-top: auto;
+  margin-bottom: auto;
+  line-height: 40px;
+}
+
+#name, #email{
+    width: 98%;
+    height: 2.8em;
+    position: relative;
+    bottom: 10px;
+    border: 2px solid #66FCF1;
+    border-radius: 10px;
+    position: inline-block;
+    background-color: transparent;
+    margin-bottom: 10px;
+        
+  }
+#message{
+    width: 98%;
+    position: relative;
+    bottom: 10px;
+    border: 2px solid #66FCF1;
+    border-radius: 10px;
+    position: inline-block;
+    background-color: transparent;
+}
+
+#submit{
+    display: inline-block;
+    width: 98%;
+    height: 2.8em;
+    background:#1762A7;
+    border-radius: 5px;
+    color: #66FCF1;
+    font-size:1.2rem;
+    }
+.fa-mobile-alt, .fa-envelope{
+    color:rgba(205, 58, 197, 1);
+    font-size: 1.5em;
+}
+.social-icons{
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-around;
+}
+.social-icons a{
+    text-decoration: none;
+    
+}
+.social-icons i{
+    color:#193751;
+    font-size: 2.5rem;
+    
+}
+.social-icons i:hover{
+    text-decoration: none;
+    transform: scale(1.2);
+}
+@media (max-width: 480px) {
+    body {
+        margin:0;
+    }
+    .hero-image{
+        width: 100%;
+        height: auto;
+        flex-wrap: wrap;
+    }
+    .hero-image .hero-text h1{
+        font-size: 20px;
+        letter-spacing: normal;
+
+    }
+    .hero-image .hero-text p{
+        font-size: 10px;
+        letter-spacing: normal;
+
+    }
+    .hero-image .hero-btn{
+        margin-bottom: 10px;
+    }
+    nav{
+        background: #0082e6;
+        height: auto;
+        width: 100%;
+    }
+    nav ul{
+        float: right;
+        margin-right: 2px;
+    }
+        
+    nav ul li a{
+        text-decoration: none;
+        color: white;
+        font-family: poppins;
+        font-weight: 200;
+        font-size: 15px;
+        letter-spacing: 2px;
+        border-radius: 3px;
+        text-decoration: none;
+        padding: 7px 7px;
+              
+    }
+    .contacts-container{
+        width: auto;
+        flex-wrap: wrap;
+    }
+    
+   }
+    
+
+
