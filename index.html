@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honore's Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://kit.fontawesome.com/7775d9e45e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- Navbar Section -->
+    <nav class="navbar">
+        <div class="navbar__container">
+          <a href="#home" id="navbar__logo"><img src="icons/h-logo.png" alt="my logo"></a>
+          <div class="navbar__toggle" id="mobile-menu">
+            <span class="bar"></span> <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+          <ul class="navbar__menu">
+            <li class="navbar__item">
+              <a href="#home" class="navbar__links" id="home-page">Home</a>
+            </li>
+            <li class="navbar__item">
+              <a href="#about-me" class="navbar__links" id="about-page">About Me</a>
+            </li>
+            <li class="navbar__item">
+              <a href="#portfolio" class="navbar__links" id="services-page"
+                >Portfolio</a>
+            </li>
+            <li class="navbar__item">
+                <a href="#contact-me" class="navbar__links" id="services-page"
+                  >Contact Me</a>
+              </li>
+              <li class="navbar__item">
+                <a href="/pages/blog.html" class="navbar__links" id="services-page"
+                  >Blog</a>
+              </li>
+          </ul>
+        </div>
+      </nav>
+
+ <!-- Home section -->
+        <div class="hero-image" id="home">
+            <div class="hero-text">
+                <img src="img/waving-hand.png" alt="waving hand">
+                <h1>I'm Honore IRADUKUNDA</h1>
+                <p>A software engineer</p>
+                <a href="#contact-me"><button class="hero-btn">GET IN TOUCH</button></a>
+            </div>
+        </div>
+
+<!-- About me section -->
+<section class="about-me" id="about-me">
+    <div class="about_me-container">
+        <div class="left-content">
+            <img src="img/Profile picture.png" alt="profile picture">
+        </div>
+        <div class="right-content">
+            <div class="right-header">
+                <h1>About <span>Me</span></h1>
+            </div>
+            <div class="paragraphs">
+                <p>I have more than a year work experience in front-end and have a firm knowledge of HTML, CSS and JavaScript language and possess a good knowledge of computer software packages (frameworks and tools) that are used in today’s technology.</p>
+                <p>I am highly-motivated, result oriented, self-driven, hard-working, fast learner and constantly seeking to improve my skills. in addition to this, I adopt to the changes quickly and I am able to work well both in a team environment as well as using own initiative. I am able to work well under pressure and adhere to strict deadlines.</p>
+            </div>
+            <div class="skills-section">
+                <h2>My current technical skills:</h2>
+                <div class="skills-icons-wrapper">
+                    <div class="skills-icons">
+                        <span><img src="icons/html.png" alt="html icon"></span>
+                        <span><img src="icons/css.png" alt="css icon"></span>
+                        <span><img src="icons/js.png" alt="JavaScript icon"></span>
+                        <span><img src="icons/sass.png" alt="sass icon"></span>
+                        <span><img src="icons/react.png" alt="react icon"></span>
+                    </div>
+                    <div class="skills-icons">
+                        <span><img src="icons/redux.svg" alt="redux icon"></span>
+                        <span><img src="icons/git.png" alt="git icon"></span>
+                        <span><img src="icons/bootstrap.png" alt="bootstrap icon"></span>
+                        <span><img src="icons/illustrator.png" alt="illustrator icon"></span>
+                        <span><img src="icons/photoshop.png" alt="photoshop icon"></span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact section -->
+ <section class="contacts-section" id="contact-me">
+    <h1>
+        <span class="get">Get</span>
+        <span class="in-touch">in touch</span>
+    </h1>
+    <div class="contacts-div" id="contact-me">
+        <div class="contacts-container">
+            <div class="left-contacts">
+                <div>
+                   <span> <i class="fas fa-mobile-alt fa-fw"></i></span>
+                   <span class="phone-email">&nbsp;(250)789 788 844</span>
+                </div>
+                <div>
+                    <span> <i class="far fa-envelope fa-fw"></i></i></span>
+                    <span class="phone-email">&nbsp;ihonore01@gmail.com</span>
+                 </div>
+             
+                <div class="social-icons">
+                    <span>
+                        <a href="https://www.linkedin.com/in/ihonore/" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </span>
+                    <span>
+                        <a href="https://twitter.com/HonoreIradukund" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </span>
+                    <span>
+                        <a href="https://join.skype.com/invite/ARXEK9O1xH5g" target="_blank">
+                            <i class="fab fa-skype"></i>
+                        </a>
+                    </span>
+                    <span>
+                        <a href="https://www.github.com/ihonore/" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </span>
+                </div>
+            </div>
+            <div class="right-contacts">
+                <form action="" class="contact-form">
+                    <h3>Send me a quick message</h3>
+                    <div>
+                        <input type="text" placeholder="Name" id="name">
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Email" id="email">
+                    </div>
+                    <div>
+                        <textarea name="message" id="message" cols="30" rows="10" placeholder="message" id="message"></textarea>
+                    </div>
+                    <button type="submit" id="submit"><i class="fas fa-paper-plane"></i></button>  
+                </form>
+            </div>
+        </div>
+    </div>
+ </section>
+
+ <!-- Portfolio section -->
+ <section class="portfolio-section" id="portfolio">
+     <h1>Portfolio</h1>
+     <div class="projects-container">
+         <div class="project-cards-wraper">
+             <div class="img-card">
+                 <img src="img/Survey form.png" alt="survey form">
+             </div>
+             <div class="img-card">
+                <img src="img/Poduct Landig Page.png" alt="product landing page">
+            </div>
+         </div>
+         <div class="project-cards-wraper">
+            <div class="img-card">
+                <img src="img/iconnect.png" alt="I Connect solutions">
+            </div>
+            <div class="img-card">
+               <img src="img/technical documentation.png" alt="technical documentation">
+           </div>   
+        </div>
+        <div class="project-cards-wraper">
+            <div class="img-card">
+                <img src="img/irec.png" alt="irec ltd">
+            </div>
+            <div class="img-card">
+               <img src="img/tribute page.png" alt="tribute page">
+           </div> 
+        </div>
+     </div>
+ </section>
+
+
+
+<script src="js/main.js"></script>
+</body>
+</html>
