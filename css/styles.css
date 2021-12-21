@@ -598,15 +598,25 @@ input::placeholder,textarea::placeholder{
 
 /* Blog section */
 .blog-section{
-    height: 1500px;
+    top: 0;
     font-family: poppins;
     background: white;
+    padding-bottom: 5rem;
 }
 .blog-section h1{
     text-align: center;
     font-size: 2rem;
     color: rgba(56, 53, 53, 0.45);
-    margin: 4rem;
+    padding: 2rem;
+}
+.back-button{
+    text-align: center;
+    text-decoration: none;
+    color: cornflowerblue;
+}
+.fa-arrow-alt-circle-left{
+    
+    font-size: 1.5rem;
 }
 
 .blog-container{
@@ -633,16 +643,16 @@ input::placeholder,textarea::placeholder{
     height: auto;
 
 }
-.category-and-time{
+.editor-and-time{
     display: flex;
     margin-bottom: 1rem;
  
 }
-.category-and-time span{
+.editor-and-time span{
     margin-right:20px;
     font-weight: 500;
 }
-.category{
+.editor{
     color: #1762A7;
 }
 .time{
@@ -662,4 +672,84 @@ input::placeholder,textarea::placeholder{
 .likes-counter, .comments-counter{
     color: #1762A7;
     font-weight: bold;
+}
+.blog-body p{
+    line-height: 2rem;
+}
+.blog-body h3{
+    padding-bottom: 1rem;
+}
+
+@media screen and (max-width: 860px){
+    .blog-section{
+        padding-bottom: 2rem;
+        align-items: center;
+        max-width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .blog-section h1{
+        font-size: 1.5rem;
+        padding: 1.5rem;
+    }
+    
+    .blog-container{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding:2rem 1.5rem;
+    }
+    .blog-content{
+        padding:2px;
+    }
+    .blog-thumbnail{
+        width: 100%;
+    }
+    .blog-thumbnail img{
+        width: 100%;
+        height: auto;
+    
+    }
+    .editor-and-time{
+        display: flex;
+        margin-bottom: 1rem;
+     
+    }
+    .editor-and-time span{
+        margin-right:10px;
+        font-weight: 400;
+        font-size: 10px;
+    }
+    
+    .likes-and-comments{
+        display: flex;
+        margin-top:15px;
+    }
+    .likes,.comments{
+        margin-right: 15px;  
+    }
+    .likes i,.comments i{
+        font-size: 16px;
+    }
+    .likes-counter, .comments-counter{
+        font-weight: 400;
+        font-size: 14px;
+    }
+    .blog-body p{
+        line-height: normal;
+        font-size: 12px;
+        text-align: justify;
+    }
+    .blog-body h3{
+        padding-bottom: 1rem;
+        font-size: 13px;
+        font-weight: 600;
+    }
+    .back-button, .fa-arrow-alt-circle-left{
+        font-size:14px
+    }
+
 }
