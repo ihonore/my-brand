@@ -24,7 +24,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top:-80px;
 }
 
 .hero-image .hero-text{
@@ -76,7 +75,7 @@ body{
     .hero-image{
         width: 100%;
         height: 50%;
-        margin-top:0;
+        margin-top:40px;
     }
    .hero-image .hero-text{
        text-align: center;
@@ -104,7 +103,7 @@ body{
     }
 }
 
-/* Navbar section */
+/*  ///////////////// Navbar section ////////////////////////*/
 
   .navbar {
     background: #0082e6;
@@ -113,8 +112,9 @@ body{
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
-    position: sticky;
+    position: fixed;
     top: 0;
+    width: 100%;
     z-index: 1500;
     
   }
@@ -258,7 +258,7 @@ body{
     }
   }
 
-/* About Me section */
+/*  ///////////////// About Me section ////////////////////////*/
 .about-me{
     width: 100%;
     height: 100vh;
@@ -372,7 +372,7 @@ body{
   }  
 }
 
-/* Contact section */
+/*  ///////////////// Contact Me section ////////////////////////*/
 .contacts-section{
     height:100vh;
     padding-top: 2rem;
@@ -527,7 +527,7 @@ input::placeholder,textarea::placeholder{
     }
 }
 
-/* Portfolio section */
+/*  ///////////////// Portfolio section ////////////////////////*/
 .portfolio-section{
     background:#193751;
     width: 100%;
@@ -596,7 +596,7 @@ input::placeholder,textarea::placeholder{
     }
 }
 
-/* Blog section */
+/*  ///////////////// Blog page section ////////////////////////*/
 .blog-section{
     top: 0;
     font-family: poppins;
@@ -750,6 +750,170 @@ input::placeholder,textarea::placeholder{
     }
     .back-button, .fa-arrow-alt-circle-left{
         font-size:14px
+    }
+
+}
+
+/*  ///////////////// Blog Details section ////////////////////////*/
+.whole-blog-section{
+    background: white;
+    padding: 2rem 15%;
+}
+.whole-blog-section h1{
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    color: rgba(196, 184, 184, 0.9);
+    text-align: center;
+}
+.blog-details-thumbnail{
+    width: 100%;
+    padding-bottom: 2rem;
+    padding-top: 1rem;
+}
+.blog-details-thumbnail img{
+    width: 100%;
+}
+.blog-details-section{
+    font-family: poppins;
+    box-shadow: 0 0 10px rgb(235, 224, 224);
+    padding: 3rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    
+}
+.blog-details-section h2{
+    padding-bottom: 1rem;
+    font-size: 1.8rem;
+}
+.blog-details-section #editor{
+    color: rgba(196, 184, 184,1);
+}
+.main-content h3{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+.main-content p{
+    margin-bottom: 1rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-align: justify;
+}
+.main-content ul{
+    margin-bottom: 2rem;
+}
+.main-content ul li{
+    margin-left: 4rem;
+    padding-left: 1rem;
+}
+.main-content ul h4{
+    margin-bottom: 1rem;
+    
+}
+.main-content code{
+    background:rgb(27, 27, 27);
+    color:rgb(255, 255, 255);
+    font-size:1rem;
+    padding:0 0.5rem;
+}
+.comment-btn{
+    padding: 0.5rem 1rem;
+    width: 200px;
+    margin-top:2rem;
+    font-family:poppins;
+    font-size: large;
+    color: white;
+    background: #fd6547;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.comments-section{
+    font-family: poppins;
+    box-shadow: 0 0 10px rgb(235, 224, 224);
+    padding: 3rem;
+    border-radius: 5px;
+    margin-bottom: 2rem;
+}
+.comments-section h3{
+    border-bottom:3px solid #fd6547;
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    color: gray;
+}
+.commentator{
+    color:rgb(134, 129, 129);
+    font-weight: bold;
+    padding-bottom:0.5rem
+}
+.comment{
+    margin-bottom: 3rem;
+    border-bottom: 1px solid rgba(158, 153, 153, 0.425);
+    padding-bottom: 0.8rem;
+}
+
+@media screen and (max-width: 860px){
+    .whole-blog-section{
+        padding: 0.8rem 5%;
+    }
+    .whole-blog-section h1{
+        font-size: 2rem;
+        padding-bottom: 1rem;
+    }
+    .blog-details-thumbnail{
+        padding-bottom: 1rem;
+        padding-top: 0.5rem;
+    }
+    .blog-details-section{
+        padding: 1rem;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+        
+    }
+    .blog-details-section h2{
+        padding-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+    .blog-details-section #editor{
+        font-size: 0.8rem;
+
+    }
+    .main-content h3{
+        font-size: 1.1rem;
+    }
+    .main-content p{
+        margin-bottom: 1rem;
+        font-weight: 400;
+        font-size: 1rem;
+        text-align:left
+    }
+    .main-content ul{
+        margin-bottom: 1rem;
+    }
+    .main-content ul li{
+        margin-left: 2rem;
+        padding-left: 0.5rem;
+    }
+    .comment-btn{
+        padding: 0.5rem 1rem;
+        width: 200px;
+        margin-bottom: 1rem;
+        font-size: 16px;
+    }
+    .comments-section{
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    .comments-section h3{
+        border-bottom:2px solid #fd6547;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+        font-size: 1rem;
+    
+    }
+    .comment{
+        margin-bottom: 2rem;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.24);
     }
 
 }
