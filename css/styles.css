@@ -1053,3 +1053,257 @@ input[type="text"]:focus {
         letter-spacing:normal;
     }
 }
+
+/* Admin panel section */
+.admin-panel{
+    min-height: 100vh;
+    min-width: 100vw;
+    margin: 0;
+    padding: 0;
+    background: white;
+
+}
+.side-menu{
+    height: 100vh;
+    width: 20vw;
+    background: #193751;
+    position:fixed;
+}
+.side-menu .logo{
+    width: 100%;
+    height: 10vh;
+    border-bottom: 2px solid white;
+    box-shadow: 10px 0 5px 2px rgb(16, 0, 54);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.side-menu .logo img{
+    width: 50px;
+
+}
+.side-menu ul{
+    padding-top: 1rem;
+}
+.side-menu li{
+    font-size: 1.5rem;
+    color: white;
+    padding:1rem 2rem;
+    list-style: none;
+}
+.side-menu li:hover{
+    background: white;
+    color: #193751;
+    transition: .5s;
+}
+.side-menu a{
+    text-decoration: none;
+}
+
+.side-menu li span{
+    padding-left: 1rem;
+}
+.new-article-btn{
+    width: 60%;
+    padding-left: 2rem;
+    padding-top: 8rem;
+}
+.new-article-btn button{
+    width: 100%;
+    padding: 0.5rem;
+    cursor: pointer;
+    background: #1762A7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+.new-article-btn button:hover{
+    background: #4290d8;
+    transition: .5s;
+}
+.right-container{
+    position: absolute;
+    width: 80vw;
+    height: auto;
+    right: 0;
+    
+}
+.right-container header{
+    width: 100%;
+    height: 10vh;
+    background:#1762A7;
+    box-shadow: 10px 0 5px 2px rgb(151, 151, 151);
+    border-bottom: 2px solid white;
+    border-left: 3px solid white;
+    display: flex;
+    align-items: center;
+}
+.right-container .content{
+    padding:2rem 4rem;
+}
+.right-container header p{
+    color:white;
+}
+.admin-profile-picture{
+    width: 50px;
+    height: 50px;
+    border:1px solid white;
+    border-radius: 5px;
+    margin-left: 1rem;
+    
+}
+.admin-profile-picture img{
+    width: 100%;
+}
+.right-container header a{
+    right: 4rem;
+    position: absolute;
+    text-decoration: none;
+}
+.right-container header a .user:hover{
+    border-bottom: 1px solid white;
+
+}
+.admin-profile-picture:hover{
+    transform: scale(1.05);
+}
+.user-wrapper{
+    display: flex;
+    align-items: center;
+}
+.content h3{
+    color:rgba(23, 98, 167, 0.78);
+    margin-bottom: 2rem;
+}
+.message-card{
+    box-shadow:0 0 12px rgba(206, 203, 203, 0.712);
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    width: 80%;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.message-wrapper .user-names{
+    color: rgba(23, 98, 167, 1);
+    font-size: 1rem;
+    font-weight:500;
+    margin-bottom: 1rem;
+}
+.message-wrapper .user-email{
+    color: rgb(163, 159, 159);
+    font-weight: normal;
+}
+.message{
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.view-btn{
+    width: 100px;
+    
+}
+.view-btn button{
+    padding: 0.5rem 2rem;
+    cursor: pointer;
+    background: #1762A7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+
+}
+.view-btn button:hover{
+    background: #4290d8;
+    transition: .5s;
+
+}
+@media screen and (max-width:860px) {
+    .side-menu{
+        width: 10vw;
+    }
+    .side-menu .logo{
+        height: 6vh;
+        border-bottom: 1px solid white;
+        box-shadow: 0 0 5px 1px rgb(16, 0, 54);
+    }
+    .side-menu .logo img{
+        width: 80%;
+    
+    }
+    .side-menu li{
+        font-size: 1rem;
+        padding:1rem 0;
+    }
+    .side-menu li span{
+        display: none;
+    }
+    .side-menu li i{
+        padding-left: 0.5rem;
+    }
+    .new-article-btn{
+        width: 100%;
+        padding:0;
+        margin-top: 6rem;
+    }
+    .new-article-btn button span{
+        display: none;
+    }
+    .new-article-btn button{
+        border-radius: 50%;
+        background: none;
+        font-size: 1rem;
+    }
+    .right-container{
+        width: 90vw;  
+    }
+    .right-container header{
+        height: 6vh;
+        box-shadow: 5px 0 5px 1px rgb(151, 151, 151);
+        border-left: 2px solid white;
+    }
+    .right-container .content{
+        padding:1rem 1rem;
+    }
+    .admin-profile-picture{
+        width: 25px;
+        height: 25px;
+        
+    }
+    .right-container header a{
+        right: 3rem;
+    }
+    .content h3{
+        margin-bottom: 1rem;
+    }
+    .message-card{
+        box-shadow:0 0 12px rgba(206, 203, 203, 0.541);
+        margin-bottom: 1rem;
+        width: 90%;
+        padding: 1rem 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+    .message-wrapper .user-names{
+        font-size: 13px;
+    }
+    .message-wrapper .user-email{
+        font-size: 10px;
+    }
+    .message{
+        font-size: 14px;
+    }
+    .view-btn{
+        width: 100%;
+        margin-top: 1rem;
+        
+    }
+    .view-btn button{
+        padding: 0.5rem 1rem;
+        font-size: 14px;
+    
+    }
+    
+}
+
