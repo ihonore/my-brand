@@ -9,7 +9,7 @@ body{
     padding: 0;
     height: 100vh;
     font-family: poppins;
-    background-color: rgba(102, 252, 241, 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .hero-image{
@@ -1307,3 +1307,136 @@ input[type="text"]:focus {
     
 }
 
+/* List of articles page */
+
+.my-articles{
+    width: 100vw;
+    height: auto;
+    box-sizing: border-box;
+    padding: 0;
+}
+.my-articles header{
+    position: fixed;
+    top: 0;
+    height: 10vh;
+    width: 100vw;
+    background: rgba(25, 55, 81, 1);
+    margin-bottom: 19rem;
+    z-index: 2000;
+}
+.my-articles header ul{
+    display: flex;
+    position: absolute;
+    padding-left: 10%;
+    bottom: 0;
+}
+.my-articles header ul a{
+    text-decoration: none;
+}
+.my-articles header ul li{
+    list-style: none;
+    color: white;
+    padding:1rem 2rem;
+}
+.my-articles header ul li:hover{
+    background: rgba(255, 255, 255, 0.88);
+    color:rgba(25, 55, 81, 1);
+    transition:all .5s ease-in;
+}
+.my-articles main{
+    position: absolute;
+    top:10vh;
+    margin:2rem 10%;
+    padding-top: 2rem;
+}
+.article-wrapper{
+    margin-left: 2rem;
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid gray;
+    display:flex;
+    align-items: center;
+}
+.article-thumbnail{
+    width: 15%;
+    margin-right: 2rem;
+}
+.article-thumbnail img{
+    width: 100%;
+}
+.article{
+    margin-right: 2rem;
+    width: 75%;
+}
+.article h4{
+    margin-bottom: 1rem;
+}
+.actions{
+    text-align: right;
+    width: 20%;
+    
+}
+.actions i{
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    cursor: pointer;
+}
+.actions i:hover{
+    transform: scale(1.2);
+}
+.actions p{
+    font-size: 14px;
+    font-weight: 300;
+    color: rgb(150, 143, 143);
+    margin-bottom: 1rem;
+}
+.fa-eye{
+    color: rgb(48, 46, 46);
+}
+.fa-edit{
+    color: rgba(23, 98, 167, 1);
+}
+.fa-trash-alt{
+   color:rgba(231, 76, 60, 1);
+}
+
+@media screen and (max-width: 700px) {
+    .my-articles main{
+        margin:2rem 1%;
+        padding-top: 1rem;
+    }
+    .article-wrapper{
+        margin-left: 0.5rem;
+        margin-bottom: 2rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid rgb(187, 179, 179);
+        flex-wrap: wrap;
+    }
+    .article-thumbnail{
+        width: 90vw;
+        margin: 2px 2px;
+    }
+    .article{
+        width: 90vw;
+        text-align: justify;
+        margin-bottom: 0.5rem;
+    }
+    .article h4{
+        margin-bottom: 0.5rem;
+        font-size: 14px;
+    }
+    .actions{
+        text-align: right;
+        width: 90vw;
+        
+    }
+    .actions i{
+        font-size: 1.2rem;
+    }
+   
+    .actions p{
+        font-size: 12px;
+        margin-bottom: 0.5rem;
+    }
+         
+}
