@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
+    <title>Profile settings</title>
     <link rel="stylesheet" href="../css/styles.css">
     <script src="https://kit.fontawesome.com/7775d9e45e.js" crossorigin="anonymous"></script>
 </head>
@@ -18,7 +18,7 @@
                 <a href="#"><li><i class="fas fa-tachometer-alt"></i>&nbsp;<span>Dashboard</span></li></a>
                 <a href="/admin/list_of_articles.html"><li><i class="far fa-newspaper"></i>&nbsp;<span>My Articles</span></li></a>
                 <a href="#"><li><i class="fas fa-envelope-open-text"></i>&nbsp;<span>Messages</span></li></a>
-                <a href="/admin/profile_settings.html"><li><i class="fas fa-user-cog"></i>&nbsp;<span>Settings</span></li></a>
+                <a href="#"><li><i class="fas fa-user-cog"></i>&nbsp;<span>Settings</span></li></a>
                 <a href="#"><li><i class="fas fa-sign-out-alt"></i>&nbsp;<span>Logout</span></li></a>
             </ul>
             <div class="new-article-btn">
@@ -36,36 +36,40 @@
         </a>
             </header>
             <div class="content">
-                <h3>Messages</h3>
-                <div class="message-card">
-                    <div class="message-wrapper">
-                        <p class="user-names">Christian Kalisa .<span class="user-email">&nbsp; ckalisa209@gmail.com</span></p>
-                        <p class="message">I would like to know the price for car rental website . . . .</p>
+                <h3>Profile Settings</h3>
+            <div class="profile-settings">
+                <div class="profile-wrapper">
+                    <div class="profile">
+                        <div class="picture">
+                            <img src="/img/admin.jpg" alt="profile picture">
+                        </div>
+                        <label for="upload-photo">Change Profile Picture</label>
+                        <input type="file" name="photo" id="upload-photo" />
                     </div>
-                    <div class="view-btn">
-                        <button>View</button>
+                    <p>Change username:</p>
+                    <div>
+                        <input type="text" name="username" id="username">        
+                    </div>
+                    <p>Old Password:</p>
+                    <div>
+                        <input type="password" name="old-password" id="old-password">        
+                    </div>
+                    <p>New Password:</p>
+                    <div>
+                        <input type="password" name="new-password" id="new-password">        
+                    </div>
+                    <p>Confirm New Password:</p>
+                    <div>
+                        <input type="password" name="new-password" id="new-password1">        
+                    </div>
+                    <div class="save-changes-btn">
+                        <button>Save changes</button>
                     </div>
                 </div>
-                <div class="message-card">
-                    <div class="message-wrapper">
-                        <p class="user-names">Aline Irakoze .<span class="user-email"> &nbsp;irakoze1997@gmail.com</span></p>
-                        <p class="message">I was just checking if this works</p>
-                    </div>
-                    <div class="view-btn">
-                        <button>View</button>
-                    </div>
+                <div class="settings-robot">
+                    <img src="/img/profile settings Robot.svg" alt="settings robot">
                 </div>
-                <div class="message-card">
-                    <div class="message-wrapper">
-                        <p class="user-names">Aian Jr .<span class="user-email">&nbsp; i.junior@gmail.com</span></p>
-                        <p class="message">I need a website for my business, get back to me when you se this...</p>
-                    </div>
-                    <div class="view-btn">
-                        <button>View</button>
-                    </div>
-                </div>
-
-            
+            </div>
 
             </div>
         </div>
