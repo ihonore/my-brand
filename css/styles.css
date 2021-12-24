@@ -1054,7 +1054,7 @@ input[type="text"]:focus {
     }
 }
 
-/* Admin panel section */
+/* Admin panel section -- Dashboard*/
 .admin-panel{
     min-height: 100vh;
     min-width: 100vw;
@@ -1138,6 +1138,52 @@ input[type="text"]:focus {
     border-left: 3px solid white;
     display: flex;
     align-items: center;
+}
+.insights-wrapper{
+    margin:1rem 1rem;
+    width: 80%;
+    height: 30vh;
+    display: flex;
+    justify-content: space-around;
+}
+.insights-wrapper h2{
+    color: white;
+    font-size: 2.5rem;
+    letter-spacing: 0.5mm;
+    text-align: center;
+    padding-top: 1rem;
+
+}
+.visitors-card{
+    border-radius: 0 50px 0 50px;
+}
+.blogs-card{
+    border-radius: 50px 0 50px 0;
+}
+.visitors-card,.blogs-card{
+    background: #0562b9;
+    width: 40%;
+    box-shadow: 2px 2px 8px rgb(192, 187, 187);
+    border:3px solid white;
+    cursor:pointer;
+}
+.visitors-card p,.blogs-card p{
+    width: 100%;
+    background: rgba(255, 251, 153, 1);
+    padding: 1.2rem 2rem;
+    text-align: center;
+    color: #366E9F;
+    font-weight: bold;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    margin-top:8%;
+    box-shadow: 2px 2px 5px rgb(136, 133, 133);
+    margin-left: 2rem;
+
+}
+.visitors-card:hover,.blogs-card:hover{
+    box-shadow: 0 0 5px rgb(192, 187, 187);
+    transform: scale(0.98);
 }
 .right-container .content{
     padding:2rem 4rem;
@@ -1302,6 +1348,44 @@ input[type="text"]:focus {
     .view-btn button{
         padding: 0.5rem 1rem;
         font-size: 14px;
+    
+    }
+
+    /* Insights cards */
+    .insights-wrapper{
+        margin:1rem 1rem;
+        width: 90%;
+        height: 25vh;
+    }
+    .insights-wrapper h2{
+        font-size: 2rem;
+        letter-spacing: 0.2mm;
+        padding-top: 0.5rem;
+    
+    }
+    .visitors-card{
+        border-radius: 0 50px 0 50px;
+    }
+    .blogs-card{
+        border-radius: 50px 0 50px 0;
+    }
+    .visitors-card,.blogs-card{
+        background: #0562b9;
+        width: 40%;
+        box-shadow: 2px 2px 8px rgb(192, 187, 187);
+        border:3px solid white;
+        cursor:pointer;
+    }
+    .visitors-card p,.blogs-card p{
+        width: 80%;
+        padding: 1rem 0.5rem;
+        font-size: 1rem;
+        letter-spacing: 1px;
+        border-radius: 50%;
+        margin-top:8%;
+        border:2px solid white;
+        margin-left: auto;
+        margin-right: auto;
     
     }
     
