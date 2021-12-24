@@ -815,7 +815,34 @@ input::placeholder,textarea::placeholder{
     font-size:1rem;
     padding:0 0.5rem;
 }
+.comment-form{
+    width: 100%;
+    display: flex;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    background: #0082e6;
+    justify-content: space-around;
+}
+.comment-form span{
+    width:20vw;
+    background: chartreuse;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.comment-form #comment1,.comment-form #name1{
+    width: 100%;
+    padding:0.5rem 1rem;
+    outline: none;
+    border: none;
+    border-bottom: 1px black gray;
+}
 .comment-btn{
+    padding: 0.5rem 2rem;
+    
+}
+
+/* .comment-btn{
     padding: 0.5rem 1rem;
     width: 200px;
     margin-top:2rem;
@@ -826,6 +853,10 @@ input::placeholder,textarea::placeholder{
     border-radius: 5px;
     border: none;
     cursor: pointer;
+} */
+.comment-btn:hover{
+    background: #ff2a00;
+    transition: .5s;
 }
 .comments-section{
     font-family: poppins;
