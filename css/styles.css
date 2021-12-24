@@ -377,6 +377,7 @@ body{
     height:100vh;
     padding-top: 2rem;
     padding-bottom: 2rem;
+    background: #85FDF4;
     
 }
 .contacts-div{
@@ -1272,7 +1273,7 @@ input[type="text"]:focus {
     .side-menu .logo{
         height: 6vh;
         border-bottom: 1px solid white;
-        box-shadow: 0 0 5px 1px rgb(16, 0, 54);
+        box-shadow: 0 0 5px rgb(16, 0, 54);
     }
     .side-menu .logo img{
         width: 80%;
@@ -1408,10 +1409,21 @@ input[type="text"]:focus {
     margin-bottom: 19rem;
     z-index: 2000;
 }
+
+.my-articles header a img{
+    width: 50px;
+    cursor: pointer;
+    margin: 1.2rem 2.5rem;
+}
+.my-articles header a img:hover{
+    transform: scale(1.2);
+}
+
+
 .my-articles header ul{
     display: flex;
     position: absolute;
-    padding-left: 10%;
+    margin-left: 10%;
     bottom: 0;
 }
 .my-articles header ul a{
@@ -1521,6 +1533,10 @@ input[type="text"]:focus {
     .actions p{
         font-size: 12px;
         margin-bottom: 0.5rem;
+    }
+    .my-articles header a img{
+        width: 40px;
+        margin: 1.2rem 1rem;
     }
          
 }
