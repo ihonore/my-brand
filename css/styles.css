@@ -820,12 +820,10 @@ input::placeholder,textarea::placeholder{
     display: flex;
     margin-bottom: 2rem;
     margin-top: 2rem;
-    background: #0082e6;
     justify-content: space-around;
 }
 .comment-form span{
     width:20vw;
-    background: chartreuse;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -835,25 +833,28 @@ input::placeholder,textarea::placeholder{
     padding:0.5rem 1rem;
     outline: none;
     border: none;
-    border-bottom: 1px black gray;
+    font-size: 1rem;
+    border-bottom: 1px solid gray;
+}
+#comment1::placeholder,#name1::placeholder{
+    color: rgba(128, 128, 128, 0.836);
+}
+#comment1:focus,#name1:focus{
+    border-bottom: 2px solid black;
+
 }
 .comment-btn{
-    padding: 0.5rem 2rem;
-    
-}
-
-/* .comment-btn{
-    padding: 0.5rem 1rem;
-    width: 200px;
-    margin-top:2rem;
+    padding: 0.2rem 2rem;
     font-family:poppins;
-    font-size: large;
+    font-size: 1rem;
     color: white;
     background: #fd6547;
     border-radius: 5px;
     border: none;
     cursor: pointer;
-} */
+    
+}
+
 .comment-btn:hover{
     background: #ff2a00;
     transition: .5s;
@@ -945,6 +946,25 @@ input::placeholder,textarea::placeholder{
     .comment{
         margin-bottom: 2rem;
         border-bottom: 1px solid rgba(128, 128, 128, 0.24);
+    }
+
+    /*comment form*/
+    .comment-form{
+        flex-direction: column;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+    .comment-form span{
+        margin-bottom: 1rem;;
+        width:90%;
+        justify-content: flex-start;
+    }
+    .comment-btn{
+        margin-top: 1rem;
+    }
+    #comment1:focus,#name1:focus{
+        border-bottom: 1px solid black;
+    
     }
 
 }
