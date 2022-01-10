@@ -8,7 +8,7 @@ body{
     margin: 0;
     padding: 0;
     height: 100vh;
-    font-family: poppins;
+    font-family: 'Poppins', sans-serif;
     background-color: rgba(255, 255, 255, 0.5);
 }
 
@@ -71,6 +71,24 @@ body{
     background: rgba(255, 255, 255, 0.308);
     
 }
+.wave {
+    animation-name: wave-animation;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    transform-origin: 70% 70%;
+    display: inline-block;
+  }
+
+  @keyframes wave-animation {
+      0% { transform: rotate( 0.0deg) }
+     10% { transform: rotate(25.0deg) }
+     20% { transform: rotate(-8.0deg) }
+     30% { transform: rotate(14.0deg) }
+     40% { transform: rotate(-4.0deg) }
+     50% { transform: rotate(10.0deg) }
+     60% { transform: rotate( 0.0deg) }
+    100% { transform: rotate( 0.0deg) }
+  }
 @media screen and (max-width: 860px){
     .hero-image{
         width: 100%;
@@ -287,20 +305,21 @@ body{
    margin-left: 4rem;
    display: flex;
    flex-direction: column;
-   justify-content: space-between;
+   justify-content: space-around;
    
 }
 .right-content .paragraphs p{
-   font-family: poppins;
+   font-family: 'Poppins', sans-serif;
    color: rgba(0, 0, 0, 0.65);
    margin-bottom: 1.5rem;
    font-weight: 500;
 }
-.right-header{
+.about-header{
    font-size: 1.5rem;
    color:rgba(31, 40, 51, 0.65);
+   text-align: center;
 }
-.right-header span{
+.about-header span{
    color: rgba(205, 58, 197, 1);
 }
 
@@ -335,15 +354,13 @@ body{
       align-items: center;
 
   }
-  .right-content .right-header h1{
-      position: relative;
-      top:-78vh;
+  .about-me .about-header h1{
       font-size: 2rem;
   }
   .right-content .paragraphs{
-   font-family: poppins;
+    font-family: 'Poppins', sans-serif;
    color: rgba(0, 0, 0, 0.65);
-   margin-top:-60px;
+   margin-top:-1.5rem;
   }
   .right-content .paragraphs p{
    margin-bottom: 1.2rem;
@@ -377,7 +394,7 @@ body{
     height:100vh;
     padding-top: 2rem;
     padding-bottom: 2rem;
-    background: #85FDF4;
+    background: rgb(165, 255, 249);
     
 }
 .contacts-div{
@@ -415,6 +432,9 @@ body{
     margin-top: auto;
  
 }
+.left-contacts a{
+    text-decoration: none;
+}
 .phone-email{
     font-weight: 500;
     font-size: 1.5rem;
@@ -432,6 +452,8 @@ body{
     position: inline-block;
     background-color: transparent;
     margin-bottom: 10px;
+    color: white;
+    outline: none;
         
   }
 #message{
@@ -443,9 +465,11 @@ body{
     border-radius: 10px;
     position: inline-block;
     background-color: transparent;
+    color: white;
+    outline: none;
 }
 input::placeholder,textarea::placeholder{
-    color: rgba(209, 216, 201, 0.664);
+    color: rgba(236, 240, 231, 0.925);
 }
 #submit{
     display: inline-block;
@@ -518,10 +542,15 @@ input::placeholder,textarea::placeholder{
         padding-top: 1rem;
         margin-top: 2rem;
     }
+    #name, #email, #message{
+        border:1px solid #66FCF1;
+    }
     .right-contacts form h3{
         font-size: 15px;
         font-weight: normal;
         padding-bottom: 1rem;
+        text-align: center;
+        margin-bottom: 1rem;
     }
     .right-contacts form #message{
         height: 65px;
@@ -538,7 +567,7 @@ input::placeholder,textarea::placeholder{
     text-align: center;
     font-size: 3rem;
     color: #66FCF1;
-    font-family: poppins;
+    font-family: 'Poppins', sans-serif;
     padding:2rem;
 }
 .projects-container{
@@ -600,7 +629,7 @@ input::placeholder,textarea::placeholder{
 /*  ///////////////// Blog page section ////////////////////////*/
 .blog-section{
     top: 0;
-    font-family: poppins;
+    font-family: 'Poppins', sans-serif;
     background: white;
     padding-bottom: 5rem;
 }
@@ -775,7 +804,7 @@ input::placeholder,textarea::placeholder{
     width: 100%;
 }
 .blog-details-section{
-    font-family: poppins;
+    font-family: 'Poppins', sans-serif;
     box-shadow: 0 0 10px rgb(235, 224, 224);
     padding: 3rem;
     border-radius: 5px;
@@ -816,20 +845,52 @@ input::placeholder,textarea::placeholder{
     font-size:1rem;
     padding:0 0.5rem;
 }
+.comment-form{
+    width: 100%;
+    display: flex;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    justify-content: space-around;
+}
+.comment-form span{
+    width:20vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.comment-form #comment1,.comment-form #name1{
+    width: 100%;
+    padding:0.5rem 1rem;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    border-bottom: 1px solid gray;
+}
+#comment1::placeholder,#name1::placeholder{
+    color: rgba(128, 128, 128, 0.836);
+}
+#comment1:focus,#name1:focus{
+    border-bottom: 2px solid black;
+
+}
 .comment-btn{
-    padding: 0.5rem 1rem;
-    width: 200px;
-    margin-top:2rem;
+    padding: 0.2rem 2rem;
     font-family:poppins;
-    font-size: large;
+    font-size: 1rem;
     color: white;
     background: #fd6547;
     border-radius: 5px;
     border: none;
     cursor: pointer;
+    
+}
+.comment-btn:hover{
+    background: #ff2a00;
+    transform: scale(1.2);
+    transition: .3s;
 }
 .comments-section{
-    font-family: poppins;
+    font-family: 'Poppins', sans-serif;
     box-shadow: 0 0 10px rgb(235, 224, 224);
     padding: 3rem;
     border-radius: 5px;
@@ -916,6 +977,24 @@ input::placeholder,textarea::placeholder{
         margin-bottom: 2rem;
         border-bottom: 1px solid rgba(128, 128, 128, 0.24);
     }
+     /*comment form*/
+    .comment-form{
+        flex-direction: column;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+    .comment-form span{
+        margin-bottom: 1rem;;
+        width:90%;
+        justify-content: flex-start;
+    }
+    .comment-btn{
+        margin-top: 1rem;
+    }
+    #comment1:focus,#name1:focus{
+        border-bottom: 1px solid black;
+    
+    }
 
 }
 
@@ -984,7 +1063,7 @@ input::placeholder,textarea::placeholder{
 }
 input[type="text"]:focus {
     border-color: dodgerBlue;
-    box-shadow: 0 0 8px 0 dodgerBlue;
+    box-shadow: 0 0 6px 0 rgb(183, 215, 248);
   }
 .input-div input::placeholder{
     color: white;
@@ -1680,7 +1759,7 @@ input[type="password"]:focus {
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    font-family: poppins,sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 .save-changes-btn button:hover{
     background: #4480b4;
