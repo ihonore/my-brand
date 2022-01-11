@@ -1088,6 +1088,11 @@ input[type="text"]:focus {
     font-size: 1.3rem;
     letter-spacing: 2px;
 }
+.right-div button:hover{
+    color: #66FCF1;
+    background:#1A69EF;
+    transition: .3s ease-in-out;
+}
 
 @media screen and (max-width: 860px){
     .login-section{
@@ -1097,16 +1102,17 @@ input[type="text"]:focus {
         padding: 1rem;
         width: 100vw;
         height: 100vh;
+        justify-content: center;
     }
     .left-div{
-        margin-left:-180px;
+        display: none;
     }
     .right-div{
         margin-top:5rem;
         margin-left:2rem;
-        width: 90%;
+        width: 80vw;
         padding: 5% 5%;
-    
+        justify-content: center;
     }
     .right-div h3{
         font-size: 1.2rem;

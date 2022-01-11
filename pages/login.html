@@ -7,6 +7,7 @@
     <title>Login page</title>
     <link rel="stylesheet" href="../css/styles.css">
     <script src="https://kit.fontawesome.com/7775d9e45e.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
     <section class="login-section">
@@ -19,22 +20,24 @@
                 <div>
                     <h3><span>Login</span>&nbsp;as Admin</h3>
                 </div>
+              <form action="/admin/index.html">
                 <div class="input-div">
                     <i class="far fa-user"></i>
-                    <input type="text" placeholder="Enter your username or email">
+                    <input type="text" placeholder="Enter your username or email" name="email">
                 </div>
                 <div class="input-div">
                     <i class="fas fa-unlock-alt"></i>
-                    <input type="text" placeholder="Enter your password">
+                    <input type="password" placeholder="Enter your password" name="password">
                 </div>
                 <div class="btn">
-                    <a href="/admin/index.html"><button>LOGIN</button></a>
+                    <button class="login-btn" type="submit">LOGIN</button>
                 </div>
+              </form>
 
             </div>
         </div>
       </div>
     </section>
-    
+<script src="/js/main.js"></script>
 </body>
 </html>
