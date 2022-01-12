@@ -1054,7 +1054,6 @@ input::placeholder,textarea::placeholder{
 .input-div input{
     width: 100%;
     padding: 10px;
-    margin-bottom: 1.5rem;
     background: none;
     border: 2px solid #ffffff;
     border-radius:10px;
@@ -1068,6 +1067,18 @@ input[type="text"]:focus {
 .input-div input::placeholder{
     color: white;
 }
+.error-message {
+    font-size: 0.85rem;
+    color: rgb(247, 121, 121);
+    margin-bottom: 1.5rem;
+  }
+  .input.input-error {
+    border: 1px solid rgb(247, 121, 121);
+  }
+  
+  .input.input-error:focus {
+    border: 1px solid rgb(245, 223, 99);
+  }
 .input-div i{
     color: white;
     position: absolute;
