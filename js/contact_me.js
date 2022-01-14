@@ -53,7 +53,7 @@ contactForm.addEventListener('submit',(e)=>{
         setTimeout(() => {
             errorMessage.classList.toggle('open-modal');
             contactForm.reset();
-          }, 4000);
+          }, 3000);
 
     }
     }

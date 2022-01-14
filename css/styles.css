@@ -1183,7 +1183,7 @@ input[type="text"]:focus {
     width: 100%;
     height: 10vh;
     border-bottom: 2px solid white;
-    box-shadow:  0 5px 2px rgb(16, 0, 54);
+    box-shadow: 1 0 5px 2px rgb(16, 0, 54);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1585,6 +1585,9 @@ input[type="text"]:focus {
     cursor: pointer;
     color:white;
   
+}
+.my-articles header .create:hover{
+    color:rgba(25, 55, 81, 1);
 }
 .my-articles header a img:hover{
     transform: scale(1.2);
