@@ -425,12 +425,15 @@ body{
     padding: 20px;
     border-radius: 10px;
     color: white;
-    line-height:4rem;
 }
 .left-contacts{
     margin-bottom: auto;
     margin-top: auto;
  
+}
+.right-contacts form h3{
+    margin-bottom: 1.8rem;
+
 }
 .left-contacts a{
     text-decoration: none;
@@ -454,13 +457,13 @@ body{
     margin-bottom: 10px;
     color: white;
     outline: none;
+    margin-bottom: 1rem;
         
   }
 #message{
     padding-left:5px;
     width: 98%;
     position: relative;
-    bottom: 10px;
     border: 2px solid #66FCF1;
     border-radius: 10px;
     position: inline-block;
@@ -470,6 +473,16 @@ body{
 }
 input::placeholder,textarea::placeholder{
     color: rgba(217, 221, 211, 0.918);
+}
+.contact-error{
+    margin-top:-1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    display: none;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    color: rgb(252, 101, 101);
+    width: 98%;
 }
 #submit{
     display: inline-block;
@@ -1170,7 +1183,7 @@ input[type="text"]:focus {
     width: 100%;
     height: 10vh;
     border-bottom: 2px solid white;
-    box-shadow: 10px 0 5px 2px rgb(16, 0, 54);
+    box-shadow:  0 5px 2px rgb(16, 0, 54);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1326,11 +1339,18 @@ input[type="text"]:focus {
     box-shadow:0 0 12px rgba(206, 203, 203, 0.712);
     margin-bottom: 2rem;
     border-radius: 10px;
+    position: relative;
     width: 80%;
     padding: 1rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+.message-card:hover{
+    box-shadow:0 0 8px rgba(245, 232, 232, 0.712);
+    cursor: pointer;
+    transition: .1s;
+    transform: scale(1.01);
 }
 .message-wrapper .user-names{
     color: rgba(23, 98, 167, 1);
@@ -1342,25 +1362,42 @@ input[type="text"]:focus {
     color: rgb(163, 159, 159);
     font-weight: normal;
 }
-.message{
+.message-wrapper .user-email a{
+    text-decoration: none;
+    color: inherit;
+}
+.message-wrapper summary{
     font-size: 1.1rem;
     font-weight: 500;
 }
-.view-btn{
+.message-wrapper .location{
+    position: absolute;
+    right: 1.5rem;
+}
+.message-wrapper .location span{
+    color: rgba(23, 97, 167, 0.5);
+}
+.message{
+    padding-left:1.2rem;
+}
+.delete-btn{
     width: 100px;
+    height: 25px;
+    
     
 }
-.view-btn button{
+.delete-btn i{
     padding: 0.5rem 2rem;
     cursor: pointer;
-    background: #1762A7;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-
+    margin-top: 0.7rem;
+    /* background: #e0eefc; */
+    color: rgb(255, 0, 0);
+    box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.589);
+    font-size: 1.5rem;
+    border-radius: 25%/50%;
 }
-.view-btn button:hover{
+
+.delete-btn i:hover{
     background: #4290d8;
     transition: .5s;
 
@@ -1431,6 +1468,25 @@ input[type="text"]:focus {
         display: flex;
         flex-direction: column;
     }
+    .message-wrapper summary{
+        font-size: 1.1rem;
+        font-weight: 500;
+        padding-top: 1rem;
+    }
+    .message-wrapper .location{
+        position: absolute;
+        top:2.2rem;
+        left:1rem;
+        border-bottom: 1px solid rgb(206, 204, 204);
+    }
+    .message-wrapper summary{
+        font-size: 1rem;
+        font-weight: 400;
+    }
+    .message-wrapper .location{
+        position: absolute;
+        right: 1.5rem;
+    }
     .message-wrapper .user-names{
         font-size: 13px;
     }
@@ -1439,15 +1495,20 @@ input[type="text"]:focus {
     }
     .message{
         font-size: 14px;
+        padding-left:0;
     }
-    .view-btn{
+    .delete-btn{
         width: 100%;
         margin-top: 1rem;
         
     }
-    .view-btn button{
+    .delete-btn i{
         padding: 0.5rem 1rem;
-        font-size: 14px;
+        font-size: 20px;
+        margin-top: 0.2rem;
+        position: absolute;
+        right:0;
+        top:50%;
     
     }
 
@@ -1562,10 +1623,16 @@ input[type="text"]:focus {
 .article-wrapper{
     margin-left: 2rem;
     margin-bottom: 3rem;
-    padding-bottom: 1rem;
+    padding: 1rem 1rem;
     border-bottom: 1px solid gray;
     display:flex;
     align-items: center;
+}
+.article-wrapper:hover{
+    background: rgb(186, 230, 245);
+    transition: .1s ease-in;
+    border-radius: 10px;
+    transform:scale(1.02);
 }
 .article-thumbnail{
     width: 15%;
@@ -1616,9 +1683,9 @@ input[type="text"]:focus {
         padding-top: 1rem;
     }
     .article-wrapper{
-        margin-left: 0.5rem;
+        margin-left: 0.8rem;
         margin-bottom: 2rem;
-        padding-bottom: 0.5rem;
+        padding: 0.5rem 0.1rem;
         border-bottom: 1px solid rgb(187, 179, 179);
         flex-wrap: wrap;
     }
@@ -1673,7 +1740,8 @@ input[type="text"]:focus {
 form.add-article-wrapper{
     background:rgb(124, 234, 238);
     position: absolute;
-    top:10vh;
+    top:2vh;
+    z-index: 3000;
     margin-left: 20%;
     margin-right: 20%;
     width: 60%;
@@ -1754,6 +1822,7 @@ textarea:focus {
     .add-article-wrapper button{
         padding: 0.5rem 1.2rem;
         font-size:14px;
+        width: 8rem;
        
     }
     .add-article-wrapper input, textarea{

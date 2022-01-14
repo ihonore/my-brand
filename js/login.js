@@ -33,18 +33,19 @@ class Login {
 			return false;
 		}
 		else {
+			let credentials=JSON.parse(localStorage.getItem('account'));
 			if (field.type == "password") {
 				if (field.value.length < 8) {
 					this.setStatus(
 						field,
-						`${field.previousElementSibling.innerText} Password must be at least 8 characters`,
+						`${field.previousElementSibling.innerText} Invalid Credentials`,
 						"error"
 					);
 					return false;
-				} else if(field.value!=passWord){
+				} else if(field.value!=credentials.password){
 					this.setStatus(
 						field,
-						`${field.previousElementSibling.innerText} Password does not match`,
+						`${field.previousElementSibling.innerText} Invalid credentials`,
 						"error"
 					);
 					return false;
@@ -55,7 +56,7 @@ class Login {
 				}
 			}
 			if(field.type=="text"){
-				if(field.value==userName || field.value==email){
+				if(field.value==credentials.username || field.value==credentials.email){
 					this.setStatus(field, null, "success");
 					return true;
 				}
@@ -91,13 +92,19 @@ class Login {
 		}
 	}
 }
-// localStorage.setItem("username","ihonore01@gmail.com");
-// localStorage.setItem("password","password");
+
 const form = document.querySelector(".login-form");
-var passWord='password';
-var userName='admin';
-var email='ihonore01@gmail.com';
+
 if (form) {
 	const fields = ["username", "password"];
 	const validator = new Login(form, fields);
 }
+
+//Setting Admin password
+
+// let account={username:'admin',
+// email:"ihonore01@gmail.com",
+// password:'password',
+// profilePicture:'profile'
+// }
+// localStorage.setItem('account',JSON.stringify(account));

@@ -32,7 +32,7 @@
                 <a class="logout"><li><i class="fas fa-sign-out-alt"></i>&nbsp;<span>Logout</span></li></a>
             </ul>
             <div class="new-article-btn">
-                <a href="add_articles.html"><button><i class="far fa-plus-square"></i>&nbsp;<span>New Article</span></button></a>
+                <a href="list_of_articles.html"><button><i class="far fa-plus-square"></i>&nbsp;<span>New Article</span></button></a>
             </div>
         </div>
         <div class="right-container">
@@ -47,39 +47,22 @@
           </header>
           <div class="insights-wrapper">
               <div class="visitors-card">
-                  <h2>300</h2>
-                  <p>Total Visitors</p>
+                  <h2 id="messages-count"></h2>
+                  <p>Total Messages</p>
               </div>
               <div class="blogs-card">
-                <h2>112</h2>
+                <h2 id="blogs-count"></h2>
                 <p>Total Blogs</p>
             </div>
           </div>
-            <div class="content">
+            <div class="content" id="dashboard-messages">
                 <h3>Messages</h3>
-                <div class="message-card">
-                    <div class="message-wrapper">
-                        <p class="user-names">Christian Kalisa .<span class="user-email">&nbsp; ckalisa209@gmail.com</span></p>
-                        <p class="message">I would like to know the price for car rental website . . . .</p>
-                    </div>
-                    <div class="view-btn">
-                        <button>View</button>
-                    </div>
-                </div>
-                <div class="message-card">
-                    <div class="message-wrapper">
-                        <p class="user-names">Aline Irakoze .<span class="user-email"> &nbsp;irakoze1997@gmail.com</span></p>
-                        <p class="message">I was just checking if this works</p>
-                    </div>
-                    <div class="view-btn">
-                        <button>View</button>
-                    </div>
-                </div>
+               
                     
 
             </div>
         </div>
     </section>
-    
+    <script src="/js/dashboard.js"></script>
 </body>
 </html>

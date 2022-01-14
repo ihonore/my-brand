@@ -1,8 +1,4 @@
 var allArticles=document.querySelector('.all-articles');
-let articleWrapper=document.querySelector('.article-wrapper');
-let articleThumbnail=document.querySelector('.article-thumbnail');
-let article=document.querySelector('.article');
-let actions=document.querySelector('.actions');
 let readyToAppend=document.createElement('div');
 
 let img=document.createElement('img');
