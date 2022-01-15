@@ -8,7 +8,7 @@ let p=document.createElement('p');
 let bodyParagraph=document.createElement('p');
 
 
-//formatting date and time when article added
+//formatting date and time of when article is added
 let t = new Date();
 let date = ('0' + t.getDate()).slice(-2);
 let month = ('0' + (t.getMonth() + 1)).slice(-2);
@@ -16,7 +16,7 @@ let year = t.getFullYear();
 let hours = ('0' + t.getHours()).slice(-2);
 let minutes = ('0' + t.getMinutes()).slice(-2);
 let seconds = ('0' + t.getSeconds()).slice(-2);
-var time = `${date}/${month}/${year}, ${hours}:${minutes}:${seconds}`;
+var time = `${date}-${month}-${year}, ${hours}:${minutes}`;
 
 var retrievedArticles;
 var articles;
@@ -27,8 +27,8 @@ localStorage.setItem('localid',localID);
 
 function renderArticle(){
     retrievedArticles = JSON.parse( localStorage.getItem('articles'));
-        if( articles=== null){
-            retrievedArticles = [];
+        if( retrievedArticles=== null){
+            articles = [];
     
         }else{
             articles = retrievedArticles;
@@ -70,6 +70,8 @@ const addArticleForm = document.querySelector('.add-article-wrapper');
 const title = document.querySelector('#article_title');
 const description = document.querySelector('#article_content');
 const image = document.querySelector('#media-url');
+// const imageInput=document.getElementById('chosen-image');
+const imageInput=document.getElementById("chosen-image");
 const addArticleBtn = document.querySelector('.add-btn');
 const alert = document.querySelector('.alert');
 const updateArticleBtn = document.querySelector('.update-btn');
@@ -85,11 +87,30 @@ closeModal.addEventListener('click', () => {
     formContainer.classList.toggle('open-modal');
   });
 
-  addArticleForm.addEventListener('submit', (e) => {
+
+//lets first convert Image chosen file into a string url
+        
+imageInput.addEventListener("click", ()=>{
+  image.value="";
+});
+
+var chosenImage;
+imageInput.addEventListener('change',function(){
+    const fileReader= new FileReader();
+
+    fileReader.addEventListener('load',() =>{
+        chosenImage=fileReader.result;
+    })
+    fileReader.readAsDataURL(this.files[0]);
+});
+
+//Add aticle when form is submitted and validated
+
+addArticleForm.addEventListener('submit', (e) => {
     e.preventDefault();
   
     //check if all fields are filled
-    if (!title.value || !description.value || !image.value) {
+    if (!title.value || !description.value || !(image.value || imageInput.value)) {
       alert.style.display = 'block';
       alert.style.backgroundColor = 'rgba(255,0,0,0.7)';
       alert.style.color = '#fff';
@@ -97,20 +118,23 @@ closeModal.addEventListener('click', () => {
     } else {
 
         retrievedArticles = JSON.parse( localStorage.getItem('articles'));
-        if( articles=== null){
-            retrievedArticles = [];
+        if( retrievedArticles=== null){
+            articles = [];
     
         }else{
             articles = retrievedArticles;
         }
 
-      var thisID=JSON.parse(localStorage.getItem('localid'));
-      console.log(thisID);
+
+    var finalImageUrl=(chosenImage)?chosenImage:image.value;
+    console.log(`This is Final Image ${finalImageUrl}`);
+  
       var thisArticle = {
-          id: thisID,
           title: title.value,
-          imageUrl: image.value,
-          body: description.value
+          imageUrl: finalImageUrl,
+          body: description.value,
+          comments: 0,
+          likes: 0
       };
       console.log(thisArticle);
       articles.push(thisArticle);
@@ -118,7 +142,6 @@ closeModal.addEventListener('click', () => {
 
       retrievedArticles=JSON.parse(localStorage.getItem('articles'));
       console.log(retrievedArticles);
-      localStorage.setItem('localid',JSON.stringify(++localID));
       
       addArticleBtn.innerHTML += '&nbsp;<i class="fas fa-spinner fa-spin"></i>';
       addArticleBtn.setAttribute('disabled','disabled');
@@ -141,7 +164,7 @@ closeModal.addEventListener('click', () => {
   });
 
 
-  //edit and delete operations
+  //delete article function
 
   const editBtns = document.querySelectorAll('.fa-edit');
   const deleteBtns = document.querySelectorAll('.fa-trash-alt');
@@ -156,6 +179,7 @@ closeModal.addEventListener('click', () => {
 
 renderArticle();
 
+//update article function
 function editArticle(index){
     addArticleBtn.style.display = 'none';
     let retrieved=JSON.parse(localStorage.getItem('articles'));
@@ -164,7 +188,8 @@ function editArticle(index){
     image.value = retrieved[index].imageUrl;
     formContainer.classList.toggle('open-modal');
     
-
+    finalImageUrl=(chosenImage)?chosenImage:image.value;
+    console.log(`this is final imageUrl ${finalImageUrl}`);
     updateArticleBtn.addEventListener('click',(e)=>{
         e.preventDefault();
      retrieved[index].title=title.value;
@@ -173,6 +198,7 @@ function editArticle(index){
      localStorage.setItem('articles',JSON.stringify(retrieved));
 
     alert.style.display = 'block';
+    alert.style.backgroundColor='lightgreen';
     alert.innerHTML = `Article updated successfully`;
 
     setTimeout(() => {
@@ -181,7 +207,4 @@ function editArticle(index){
     }, 2000);
      
     })
-
-    
-
 }

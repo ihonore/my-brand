@@ -30,10 +30,11 @@
             <input type="text" id="article_title">
         </div>
         <div class="article-img-body">
-            <p>Your Article:</p>
+            <!-- <p>Your Article:</p> -->
             <div>
-                <button class="add-media">+ Add Media</button>
-                <input id="media-url" type="text" placeholder="or paste media url here">
+                <label for="add-media" class="add-media">Add Image</label>
+                <input type="file" class="add-media" id='chosen-image'>
+                <input id="media-url" type="text" placeholder="or paste media url here if you haven't chosen a file">
             </div>
             <div>
                 <textarea name="article-body" id="article_content" cols="30" rows="15"></textarea>
