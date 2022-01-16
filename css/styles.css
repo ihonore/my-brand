@@ -1347,10 +1347,10 @@ input[type="text"]:focus {
     justify-content: space-between;
 }
 .message-card:hover{
-    box-shadow:0 0 8px rgba(245, 232, 232, 0.712);
+    box-shadow:0 0 2px rgba(23, 98, 167, 1);
     cursor: pointer;
-    transition: .1s;
     transform: scale(1.01);
+    transition: .1s;
 }
 .message-wrapper .user-names{
     color: rgba(23, 98, 167, 1);

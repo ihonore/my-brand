@@ -68,6 +68,7 @@ function deleteMessage(index){
     console.log(retrieved);
     localStorage.setItem('messages',JSON.stringify(retrieved));
     displayMessages();
+    updateMessageCount();
   }
 
 //updating Totals messages and Total numbers
