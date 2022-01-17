@@ -7,88 +7,50 @@
     <title>Blog</title>
     <link rel="stylesheet" href="../css/styles.css">
     <script src="https://kit.fontawesome.com/7775d9e45e.js" crossorigin="anonymous"></script>
+    
 </head>
+<nav class="navbar">
+    <div class="navbar__container">
+      <a href="/index.html" id="navbar__logo"><img src="/icons/h-logo.png" alt="my logo"></a>
+      <div class="navbar__toggle" id="mobile-menu">
+        <span class="bar"></span> <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="navbar__menu">
+        <li class="navbar__item">
+          <a href="/index.html" class="navbar__links" id="home-page">Home</a>
+        </li>
+        <li class="navbar__item">
+          <a href="/index.html#about-page" class="navbar__links" id="about-page">About Me</a>
+        </li>
+        <li class="navbar__item">
+          <a href="/index.html#portfolio" class="navbar__links" id="portfolio-page"
+            >Portfolio</a>
+        </li>
+        <li class="navbar__item">
+            <a href="/index.html#contact-me" class="navbar__links" id="contact-page"
+              >Contact Me</a>
+          </li>
+          <li class="navbar__item">
+            <a href="blog.html" class="navbar__links" id="blog-page"
+              >Blog</a>
+          </li>
+          <li class="navbar__item">
+            <a href="/login.html" class="navbar__links" id="login-page"
+              >Login</a>
+          </li>
+      </ul>
+    </div>
+  </nav>
 <body>
  <section class="blog-section" id="blog-section">
      <h1>Blogs</h1>
      <a href="/index.html" class="back-button"><h3><i class="far fa-arrow-alt-circle-left"></i>&nbsp;Go Back</h3></a>
-     <div class="blog-container">
-         <div class="blog-thumbnail">
-             <img src="../img/learn git thumbnail.png" alt="learn git thumbnail">
-         </div>
-         <div class="blog-content">
-             <div class="editor-and-time">
-                 <span class="editor">Edited by ihonore</span>
-                 <span class="time">3 days ago</span>
-             </div>
-             <div class="blog-body">
-                 <h3>What is Git? A Beginner's Guide to Git Version Control</h3>
-                 <p>Git is a version control system that developers use all over the world. It helps you track different versions of your code and collaborate with other developers.
-                    If you are working on a project over time, you may want to keep track of which changes were made, by whom, and when those changes were made...<a href="/pages/blogdetails.html" class="read-more">Read more</a></p>   
-             </div>
-             <div class="likes-and-comments">
-                 <div class="likes">
-                   <a href="#"><i class="far fa-thumbs-up"></i></a>
-                   <span class="likes-counter">24</span>
-                </div>
-                <div class="comments">
-                    <a href="#"><i class="far fa-comments"></i></a>
-                    <span class="comments-counter">12</span>
-                 </div>
-             </div>
-         </div>
-     </div>
-     <div class="blog-container">
-        <div class="blog-thumbnail">
-            <img src="../img/CSS-FLEXBOX thumbnail.webp" alt="learn git thumbnail">
-        </div>
-        <div class="blog-content">
-            <div class="editor-and-time">
-                <span class="editor">Edited by ihonore</span>
-                <span class="time">3 days ago</span>
-            </div>
-            <div class="blog-body">
-                <h3>CSS Flexbox and Properties</h3>
-                <p>Flexbox Box Module or CSS Flexbox is a one-dimensional layout method used for arranging elements in rows or columns. That means CSS flexbox at a time can deal with a one-dimensional layout either it can be row or column. The main aim of the flexbox is to layout, align and fill the available space among the container even if the size is unknown to make a layout responsive. <a href="#" class="read-more">Read more</a></p>   
-            </div>
-            <div class="likes-and-comments">
-                <div class="likes">
-                  <a href="#"><i class="far fa-thumbs-up"></i></a>
-                  <span class="likes-counter">24</span>
-               </div>
-               <div class="comments">
-                   <a href="#"><i class="far fa-comments"></i></a>
-                   <span class="comments-counter">12</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="blog-container">
-        <div class="blog-thumbnail">
-            <img src="../img/why i love coding.jpg" alt="why i love coding">
-        </div>
-        <div class="blog-content">
-            <div class="editor-and-time">
-                <span class="editor">Edited by ihonore</span>
-                <span class="time">3 days ago</span>
-            </div>
-            <div class="blog-body">
-                <h3>5 reasons why i am passionate about coding</h3>
-                <p>You can solve problems. Solving problems is where it's at. It's like the best puzzle game, but you get to do it as a job. Sure, puzzles will leave you frustrated at times, but solving them is genuinely satisfying. You'll take the rest of the day off and sit in the sun with a cup of tea and put something in your timesheet about "internal admin>Read more</a></p>   
-            </div>
-            <div class="likes-and-comments">
-                <div class="likes">
-                  <a href="#"><i class="far fa-thumbs-up"></i></a>
-                  <span class="likes-counter">67</span>
-               </div>
-               <div class="comments">
-                   <a href="#"><i class="far fa-comments"></i></a>
-                   <span class="comments-counter">32</span>
-                </div>
-            </div>
-        </div>
-    </div>
+    
+    
 
  </section>
+ <script src="/js/blog.js"></script>
+ <script src="/js/main.js"></script>
 </body>
 </html>

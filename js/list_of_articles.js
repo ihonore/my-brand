@@ -47,7 +47,7 @@ function renderArticle(){
                 <p>${element.body.substring(0,200)} . . .</p>  
             </div>
             <div class="actions">
-                <p>Created ${time}</p>
+                <p>Created ${element.timePublished}</p>
                 <span onClick='editArticle(${index})'><i class="fas fa-edit"></i></span>
                 <span onClick='deleteArticle(${index})'><i class="far fa-trash-alt"></i></span>
             </div>
@@ -133,8 +133,10 @@ addArticleForm.addEventListener('submit', (e) => {
           title: title.value,
           imageUrl: finalImageUrl,
           body: description.value,
-          comments: 0,
-          likes: 0
+          timePublished:time,
+          comments: [],
+          commentsCount: 0,
+          likesCount: 0
       };
       console.log(thisArticle);
       articles.push(thisArticle);
