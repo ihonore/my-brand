@@ -24,7 +24,7 @@ function renderArticle(){
         </div>
         <div class="blog-body">
             <h3>${articles[i].title}</h3>
-            <p>${articles[i].body.substring(0,250)}&nbsp;<a href="/pages/blogdetails.html" class="read-more">Read more</a></p>   
+            <p>${articles[i].body.substring(0,250)}&nbsp;<a href="/pages/blogdetails.html?id=${i}" class="read-more">Read more</a></p>   
         </div>
         <div class="likes-and-comments">
             <div class="likes">

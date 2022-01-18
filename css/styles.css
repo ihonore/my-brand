@@ -169,6 +169,13 @@ body{
   .navbar__item {
     height: 80px;
   }
+  #login-page{
+      background: rgba(31, 205, 248, 0.336);
+  }
+  #login-page:hover{
+    background:rgba(165, 255, 249, 0.514);
+
+  }
   
   .navbar__links {
     color: #fff;
@@ -814,7 +821,8 @@ input::placeholder,textarea::placeholder{
 
 /*  ///////////////// Blog Details section ////////////////////////*/
 .whole-blog-section{
-    padding: 2rem 15%;
+    padding: 6.5rem 15% 2rem;
+    background: rgb(248, 248, 248);
 }
 .whole-blog-section h1{
     font-size: 3rem;
@@ -836,6 +844,7 @@ input::placeholder,textarea::placeholder{
     padding: 3rem;
     border-radius: 5px;
     margin-bottom: 1rem;
+    background: white;
     
 }
 .blog-details-section h2{
@@ -878,7 +887,17 @@ input::placeholder,textarea::placeholder{
     margin-bottom: 2rem;
     margin-top: 2rem;
     justify-content: space-around;
+    /* display: none; */
+    
 }
+/* .comment-modal{
+    background: whitesmoke;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+} */
 .comment-form span{
     width:20vw;
     display: flex;
@@ -922,6 +941,7 @@ input::placeholder,textarea::placeholder{
     padding: 3rem;
     border-radius: 5px;
     margin-bottom: 2rem;
+    background:rgb(255, 252, 252);
 }
 .comments-section h3{
     border-bottom:3px solid #fd6547;
@@ -943,7 +963,7 @@ input::placeholder,textarea::placeholder{
 
 @media screen and (max-width: 860px){
     .whole-blog-section{
-        padding: 0.8rem 5%;
+        padding: 6rem 5% 1rem;
     }
     .whole-blog-section h1{
         font-size: 2rem;
@@ -1610,6 +1630,23 @@ input[type="text"]:focus {
     color:white;
   
 }
+.goto-blog{
+    color: rgba(25, 55, 81, 1);
+    position: absolute;
+    right:12%;
+    background:white;
+    font-weight: 600;
+    padding:0.3rem 2rem;
+    border-radius: .3rem;
+    text-decoration: none;
+    top:40%;
+    transition: transform .1s;
+}
+.goto-blog:hover{
+    background: lightskyblue;
+    transform: scale(1.02);
+    color:white;
+}
 .my-articles header .create:hover{
     color:rgba(25, 55, 81, 1);
 }
@@ -1708,6 +1745,11 @@ input[type="text"]:focus {
     .my-articles .all-articles{
         margin:2rem 1%;
         padding-top: 1rem;
+    }
+    .goto-blog{
+        right:5%;
+        background:white;
+        padding:0.2rem 1rem;
     }
     .article-wrapper{
         margin-left: 0.8rem;

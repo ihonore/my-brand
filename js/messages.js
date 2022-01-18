@@ -35,10 +35,15 @@ function displayMessages(){
 
 displayMessages();
 
-function deleteMessage(index){
-    let retrieved=JSON.parse(localStorage.getItem('messages'));
+function deleteMessage(index,e){
+    var checker=confirm("Are you sure? ⚠️");
+    if(checker===false){
+        e.preventDefault();
+    } else{
+        let retrieved=JSON.parse(localStorage.getItem('messages'));
     retrieved.splice(index,1);
     console.log(retrieved);
     localStorage.setItem('messages',JSON.stringify(retrieved));
     displayMessages();
+    }  
   }

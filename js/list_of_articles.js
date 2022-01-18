@@ -171,12 +171,18 @@ addArticleForm.addEventListener('submit', (e) => {
   const editBtns = document.querySelectorAll('.fa-edit');
   const deleteBtns = document.querySelectorAll('.fa-trash-alt');
 
-  function deleteArticle(index){
+  function deleteArticle(index,e){
+    var checker=confirm("Are you sure? ⚠️");
+    if(checker===false){
+      e.preventDefault();
+    }else{
     let retrieved=JSON.parse(localStorage.getItem('articles'));
     retrieved.splice(index,1);
     console.log(retrieved);
     localStorage.setItem('articles',JSON.stringify(retrieved));
     renderArticle();
+    }
+    
   }
 
 renderArticle();
