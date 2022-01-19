@@ -1921,11 +1921,13 @@ textarea:focus {
 
 
 /* Profile settings */
+.profile-content{
+    background: white;
+}
 .profile-wrapper{
     width: 50%;
-    box-shadow: 0 0 12px gainsboro;
+    box-shadow: 0 0 12px rgb(185, 185, 185);
     border-radius: 10px;
-    padding-left: 10%;
     padding-top: 1rem;
     background: white;
 }
@@ -1933,6 +1935,18 @@ textarea:focus {
     color:#193751;
     font-weight: 600;
     margin-bottom: 0.5rem;
+}
+.profile-wrapper p{
+    margin-left: 10%;
+}
+.profile-wrapper .profile-error-message{
+    color: red;
+    background:#61eceeb4;
+    margin-left: 0;
+    text-align: center;
+    letter-spacing: 2px;
+    height: 1.2rem;
+
 }
 #upload-photo{
     position: absolute;
@@ -1966,7 +1980,9 @@ textarea:focus {
     outline: none;
     padding: 0.7rem 1rem;
     margin-bottom: 1.2rem;
+    margin-left: 10%;
 }
+
 input[type="password"]:focus {
     border-color: dodgerBlue;
     box-shadow: 0 0 8px 0 dodgerBlue;
@@ -1975,6 +1991,8 @@ input[type="password"]:focus {
     width: 80%;
     display: flex;
     justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 .save-changes-btn button{
     color: white;
@@ -1995,6 +2013,7 @@ input[type="password"]:focus {
 .settings-robot{
     width:40%;
     margin-left: 3rem;
+    margin-top: 7%;
     
 }
 .profile-settings{
@@ -2005,7 +2024,7 @@ input[type="password"]:focus {
 
 @media screen and (max-width:860px){
     .profile-wrapper{
-        width: 98%;
+        width: 90%;
     }
     .profile-wrapper p{
         font-size: 14px;
@@ -2020,6 +2039,7 @@ input[type="password"]:focus {
         width: 90%;
         padding: 0.5rem 1rem;
         margin-bottom: 1rem;
+        margin-left: 5%;
     }
     .save-changes-btn{
         width: 90%;

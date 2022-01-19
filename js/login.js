@@ -101,10 +101,12 @@ if (form) {
 }
 
 //Setting Admin password
-
-// let account={username:'admin',
-// email:"ihonore01@gmail.com",
-// password:'password',
-// profilePicture:'profile'
-// }
-// localStorage.setItem('account',JSON.stringify(account));
+let user=JSON.parse(localStorage.getItem('account'));
+if(!user){
+let account={username:'admin',
+email:"ihonore01@gmail.com",
+password:'password',
+profilePicture:'profile'
+}
+localStorage.setItem('account',JSON.stringify(account));
+}

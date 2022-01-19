@@ -106,3 +106,14 @@ function updateBlogsCount(){
 }
 updateMessageCount();
 updateBlogsCount();
+
+const profileImage=document.querySelector('.profile-image');
+const displayUser=document.querySelector('.user');
+
+  function displayProfile(){
+    let userProfile =JSON.parse(localStorage.getItem('account'));
+    let profilephoto=userProfile.profilePicture;
+    displayUser.textContent=userProfile.username;
+    profileImage.setAttribute('src',profilephoto);
+ }
+ displayProfile();

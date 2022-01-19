@@ -30,24 +30,26 @@
         <div class="right-container">
             <header>
                 <a href="/admin/profile_settings.html"><div class="user-wrapper">
-                <p class="user">ihonore </p>
+                <p class="user"></p>
                 <div class="admin-profile-picture">
-                    <img src="../img/admin.jpg" alt="profile picture">
+                    <img  alt="profile picture" class="profile-image">
                 </div>
             </div>
         </a>
             </header>
-            <div class="content">
+            <div class="content profile-content">
                 <h3>Profile Settings</h3>
             <div class="profile-settings">
-                <form class="profile-wrapper">
+                <form class="profile-wrapper" id="profile-form">
                     <div class="profile">
                         <div class="picture">
-                            <img src="/img/admin.jpg" alt="profile picture">
+                            <img  alt="profile picture" class="profile-image">
                         </div>
                         <label for="upload-photo">Change Profile Picture</label>
                         <input type="file" name="photo" id="upload-photo" />
+                        
                     </div>
+                    <p class="profile-error-message"></p>
                     <p>Change username:</p>
                     <div>
                         <input type="text" name="username" id="username">        
@@ -58,14 +60,14 @@
                     </div>
                     <p>New Password:</p>
                     <div>
-                        <input type="password" name="new-password" id="new-password">        
+                        <input type="password" name="new-password" id="new-password1">        
                     </div>
                     <p>Confirm New Password:</p>
                     <div>
-                        <input type="password" name="new-password" id="new-password1">        
+                        <input type="password" name="new-password" id="new-password2">        
                     </div>
                     <div class="save-changes-btn">
-                        <button>Save changes</button>
+                        <button type="submit">Save changes</button>
                     </div>
                 </form>
                 <div class="settings-robot">
@@ -76,6 +78,6 @@
             </div>
         </div>
     </section>
-    
+    <script src="/js/profile_settings.js"></script>
 </body>
 </html>
