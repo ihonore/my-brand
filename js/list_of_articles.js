@@ -171,19 +171,27 @@ addArticleForm.addEventListener('submit', (e) => {
   const editBtns = document.querySelectorAll('.fa-edit');
   const deleteBtns = document.querySelectorAll('.fa-trash-alt');
 
-  function deleteArticle(index,e){
-    var checker=confirm("Are you sure? ⚠️");
-    if(checker===false){
-      e.preventDefault();
-    }else{
-    let retrieved=JSON.parse(localStorage.getItem('articles'));
-    retrieved.splice(index,1);
-    console.log(retrieved);
-    localStorage.setItem('articles',JSON.stringify(retrieved));
-    renderArticle();
-    }
+const confirmDiv=document.querySelector('.overlay-articles');
+const confirmOkBtn=document.getElementById('ok');
+const confirmCancelBtn=document.getElementById('no');
+
+
+function deleteArticle(index){
+confirmDiv.style.display="block";
     
-  }
+confirmCancelBtn.addEventListener('click',(e)=>{
+    e.preventDefault();
+    confirmDiv.style.display="none";
+});
+confirmOkBtn.addEventListener('click',()=>{
+  let retrieved=JSON.parse(localStorage.getItem('articles'));
+  retrieved.splice(index,1);
+  console.log(retrieved);
+  localStorage.setItem('articles',JSON.stringify(retrieved));
+  confirmDiv.style.display="none";
+  renderArticle();
+});
+}
 
 renderArticle();
 

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List of Articles</title>
+    <link rel='shortcut icon' type='image/png' href='/favicon-32x32.png' />
     <link rel="stylesheet" href="../css/styles.css">
     <script src="https://kit.fontawesome.com/7775d9e45e.js" crossorigin="anonymous"></script>
     <script defer src="/js/authenticate.js"></script>
@@ -23,6 +24,18 @@
             </a>
             <a class="goto-blog" href="/pages/blog.html" target="_blank">Go To Blog</a>
         </header>
+
+        <div class="overlay-articles">
+            <div class="confirm-box">
+                <div class="confirm-header"><img src="/icons/h-logo.png"> Confirm Your Choice</div>
+                <div class="confirm-body">Are you sure? ⚠️</div>
+                <div class="confirm-footer">
+                    <button id='ok' class="box-btn">Ok</button>
+                    <button id='no' class="box-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+
     <div class="all-articles"> 
         
      </div>

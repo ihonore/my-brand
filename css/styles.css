@@ -286,7 +286,7 @@ body{
 /*  ///////////////// About Me section ////////////////////////*/
 .about-me{
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     background: white;
     padding-top: 50px;
     padding-bottom: 50px;
@@ -599,12 +599,17 @@ input::placeholder,textarea::placeholder{
     align-items: center;
     height: 70vh;
 }
-.img-card img{
-    width: 242px;
-    height: 140px;
+.img-card{
+    width: 250px;
+    height: 150px;
     margin-right:-4rem;
+}
+.img-card img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
     border-radius: 10px;
-    border: 2px solid white;
+    border: 1px solid white;
     cursor: pointer;
 }
 .project-cards-wraper{
@@ -636,14 +641,20 @@ input::placeholder,textarea::placeholder{
     }
     .project-cards-wraper{
         padding-left: 5%;
+        margin-bottom: 1.2rem;
+    }
+    .img-card{
+        width: 95vw;
+        height: 40vh;
+        margin-right:-2rem;
+        
+
     }
     .img-card img{
-        margin-right:auto;
-        margin-left: auto;
-        margin-bottom: 1rem;
-    }
-    .img-card img:hover{
-        transform: scale(1.1);
+        object-fit: cover;
+        height: 90%;
+        width: 90%;
+        border: 2px solid white;
     }
 }
 
@@ -1438,6 +1449,102 @@ input[type="text"]:focus {
     background: #4290d8;
     transition: .5s;
 
+}
+
+/* Cofirm box */
+.confirm-overlay{
+    background: rgba(0, 0, 0, 0.685);
+    width: 80vw;
+    height: 100vh;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index:2;
+    display: none;
+}
+.overlay-articles{
+    background: rgba(0, 0, 0, 0.685);
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top:0;
+    right:0;
+    z-index:2;
+    display: none;
+
+}
+.confirm-box{
+    width: 20rem;
+    height: 10rem;
+    top:30%;
+    right:30%;
+    background: white;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: inset 0 0 5px #000000;
+}
+.confirm-box .confirm-header{
+    background: rgba(23, 98, 167, 1);
+    width: 100%;
+    color:white;
+    padding:2px 2px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.confirm-header img{
+    width:1.5rem;
+    margin-right: 0.2rem;
+}
+.confirm-box .confirm-body{
+    font-size: 1.4rem;
+    font-weight: 550;
+}
+.confirm-box .confirm-footer{
+    background: rgb(0, 139, 139);
+    width: 100%;
+    height: 3rem;;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+   
+}
+.confirm-footer button{
+    background: white;
+    border: none;
+    padding:0.4rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: white;
+    cursor: pointer;
+}
+.confirm-footer #ok{
+    background: rgb(255, 38, 0);
+    
+}
+.confirm-footer #no{
+    background: rgb(10, 62, 110);
+}
+
+#ok:hover, #no:hover{
+    border:0.8px solid white;
+    transition: .3s ease-in-out;
+}
+
+@media screen and (max-width:860px) {
+    .confirm-overlay{
+        width: 90vw;
+    }
+    .confirm-box{
+        top:30%;
+        left:auto;
+    }
+    
 }
 @media screen and (max-width:860px) {
     .side-menu{

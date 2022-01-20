@@ -35,18 +35,31 @@ function displayMessages(){
 
 displayMessages();
 
-function deleteMessage(index,e){
-    var checker=confirm("Are you sure? ⚠️");
-    if(checker===false){
-        e.preventDefault();
-    } else{
-        let retrieved=JSON.parse(localStorage.getItem('messages'));
+//Deleting Messages
+
+const confirmDiv=document.querySelector('.confirm-overlay');
+const confirmOkBtn=document.getElementById('ok');
+const confirmCancelBtn=document.getElementById('no');
+
+
+function deleteMessage(index){
+confirmDiv.style.display="block";
+    
+confirmCancelBtn.addEventListener('click',(e)=>{
+    e.preventDefault();
+    confirmDiv.style.display="none";
+});
+confirmOkBtn.addEventListener('click',()=>{
+    let retrieved=JSON.parse(localStorage.getItem('messages'));
     retrieved.splice(index,1);
     console.log(retrieved);
     localStorage.setItem('messages',JSON.stringify(retrieved));
+    confirmDiv.style.display="none";
     displayMessages();
-    }  
-  }
+    updateMessageCount();
+});
+}
+
 
 const profileImage=document.querySelector('.profile-image');
 const displayUser=document.querySelector('.user');
