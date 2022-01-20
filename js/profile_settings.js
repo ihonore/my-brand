@@ -25,7 +25,6 @@ profileForm.addEventListener('submit',(e)=>{
         displayProfile();
 
         setTimeout(() => {
-            profileForm.reset();
             error.textContent="";
           }, 3000);
 
@@ -37,7 +36,6 @@ profileForm.addEventListener('submit',(e)=>{
         error.textContent='username changed successfully!';
         displayProfile();
         setTimeout(() => {
-            profileForm.reset();
             error.textContent="";
           }, 3000);
     }
@@ -49,7 +47,6 @@ profileForm.addEventListener('submit',(e)=>{
         error.textContent='username and profile picture changed successfully!';
         displayProfile();
         setTimeout(() => {
-            profileForm.reset();
             error.textContent="";
           }, 3000);
     }
@@ -67,7 +64,9 @@ profileForm.addEventListener('submit',(e)=>{
             error.textContent='Password changed successfully!';
 
             setTimeout(() => {
-                profileForm.reset();
+                oldPassword.value="";
+                newPassword.value="";
+                confirmPassword.value="";
                 error.textContent="";
               }, 3000);
     
@@ -90,7 +89,9 @@ profileForm.addEventListener('submit',(e)=>{
             displayProfile();
 
             setTimeout(() => {
-                profileForm.reset();
+                oldPassword.value="";
+                newPassword.value="";
+                confirmPassword.value="";
                 error.textContent="";
               }, 3000);
         }
@@ -108,12 +109,16 @@ profileForm.addEventListener('submit',(e)=>{
             fetchedUser.username=userName.value;
             fetchedUser.password=newPassword.value;
             fetchedUser.profilePicture=chosenImage;
+            localStorage.setItem('account',JSON.stringify(fetchedUser));
             error.style.color="green";
             error.textContent='All changes saved successfully!';
             displayProfile();
 
             setTimeout(() => {
-                profileForm.reset();
+                oldPassword.value="";
+                newPassword.value="";
+                confirmPassword.value=""
+                uploadPhoto.value="";
                 error.textContent="";
               }, 3000);
     

@@ -71,6 +71,7 @@ function getLocation(){
     }
 }
 
+var lat,lon;
 function showPosition(position){
     lat=position.coords.latitude;
     lon=position.coords.longitude;
@@ -124,3 +125,4 @@ function displayLocation(latitude,longitude){
     );
 }
 
+console.log(`This is The location ${locationMessage} and ${lat} and ${lon}`);

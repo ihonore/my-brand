@@ -890,14 +890,7 @@ input::placeholder,textarea::placeholder{
     /* display: none; */
     
 }
-/* .comment-modal{
-    background: whitesmoke;
-    height: 100vh;
-    width: 100vw;
-    position: absolute;
-    top: 0;
-    left: 0;
-} */
+
 .comment-form span{
     width:20vw;
     display: flex;
@@ -1487,6 +1480,7 @@ input[type="text"]:focus {
     }
     .right-container header{
         height: 6vh;
+        width: 90vw;
         box-shadow: 5px 0 5px 1px rgb(151, 151, 151);
         border-left: 2px solid white;
     }
@@ -1609,7 +1603,7 @@ input[type="text"]:focus {
     top: 0;
     height: 10vh;
     width: 100vw;
-    background: rgba(25, 55, 81, 1);
+    background: #1762A7;
     margin-bottom: 19rem;
     z-index: 2000;
 }
@@ -1645,7 +1639,7 @@ input[type="text"]:focus {
 .goto-blog:hover{
     background: lightskyblue;
     transform: scale(1.02);
-    color:white;
+    color:rgba(25, 55, 81, 1);
 }
 .my-articles header .create:hover{
     color:rgba(25, 55, 81, 1);
@@ -1946,6 +1940,7 @@ textarea:focus {
     text-align: center;
     letter-spacing: 2px;
     height: 1.2rem;
+
 
 }
 #upload-photo{

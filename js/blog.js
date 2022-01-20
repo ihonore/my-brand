@@ -1,7 +1,6 @@
 //Display added articles to my blog
 const blogContainer=document.getElementById('blog-section');
 const readyToAppend=document.createElement('div');
-const liker=document.getElementsByClassName('far fa-thumbs-up');
 
 function renderArticle(){
     retrievedArticles = JSON.parse( localStorage.getItem('articles'));
@@ -31,8 +30,8 @@ function renderArticle(){
               <span onclick="like(${i})"><i class="far fa-thumbs-up"></i></span>
               <span class="likes-counter">${articles[i].likesCount}</span>
            </div>
-           <div class="comments">
-               <span  onclick="comment(${i})"><i class="far fa-comments"></i></span>
+           <div class="comments" id="commentsSection">
+           <a href="/pages/blogdetails.html?id=${i}#commentsSection"> <span  onclick="comment(${i})"><i class="far fa-comments"></i></span></a>
                <span class="comments-counter">${articles[i].commentsCount}</span>
             </div>
         </div>
@@ -47,6 +46,8 @@ myArticles+=template;
 }
 
 //Likes function
+const liker=document.getElementsByClassName('far fa-thumbs-up');
+
 function like(index){
     let retrieved=JSON.parse(localStorage.getItem('articles'));
     

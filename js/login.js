@@ -63,7 +63,7 @@ class Login {
 				else{
 					this.setStatus(
 						field,
-						`${field.previousElementSibling.innerText} Please enter a correct username or email `,
+						`${field.previousElementSibling.innerText} Invalid Credentials `,
 						"error"
 					);
 					return false;
@@ -103,7 +103,7 @@ if (form) {
 //Setting Admin password
 let user=JSON.parse(localStorage.getItem('account'));
 if(!user){
-let account={username:'admin',
+let account={username:'Admin',
 email:"ihonore01@gmail.com",
 password:'password',
 profilePicture:'profile'
