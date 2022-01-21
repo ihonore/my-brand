@@ -36,12 +36,12 @@ contactForm.addEventListener('submit',(e)=>{
         else{
             completeMessages=[];
         }
-        getLocation();
+        // getLocation();
         let thisMessage={
             userName: user.value,
             email: email.value,
             message: message.value,
-            location: 'Kigali, Rwanda'
+            location: locationMessage
         }
         console.log(thisMessage);
         completeMessages.push(thisMessage);
@@ -62,67 +62,40 @@ contactForm.addEventListener('submit',(e)=>{
 
 //Lets get user's geolocation
 
-function getLocation(){
-    if (navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(showPosition,showError);
+function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else {
+      console.log("The Browser Does not Support Geolocation");
     }
-    else{
-       locationMessage="Geolocation is not supported by this browser.";
-    }
-}
+  }
 
-var lat,lon;
-function showPosition(position){
-    lat=position.coords.latitude;
-    lon=position.coords.longitude;
-    displayLocation(lat,lon);
-}
-
-function showError(error){
-    switch(error.code){
-        case error.PERMISSION_DENIED:
-            locationMessage="User denied the request for Geolocation."
-        break;
-        case error.POSITION_UNAVAILABLE:
-            locationMessage="Location information is unavailable."
-        break;
-        case error.TIMEOUT:
-            locationMessage="The request to get user location timed out."
-        break;
-        case error.UNKNOWN_ERROR:
-            locationMessage="An unknown error occurred."
-        break;
-    }
-}
-
-function displayLocation(latitude,longitude){
-    var geocoder;
-    geocoder = new google.maps.Geocoder();
-    var latlng = new google.maps.LatLng(latitude, longitude);
-
-    geocoder.geocode(
-        {'latLng': latlng}, 
-        function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                if (results[0]) {
-                    var add= results[0].formatted_address ;
-                    var  value=add.split(",");
-
-                    count=value.length;
-                    country=value[count-1];
-                    state=value[count-2];
-                    city=value[count-3];
-                   locationMessage = `${city}, ${country}`;
-                }
-                else  {
-                   locationMessage = "address not found";
-                }
-            }
-            else {
-               locationMessage = `Geocoder failed due to: ${status}`;
-            }
-        }
+  async function showPosition(position) {
+    const { latitude, longitude } = position.coords;
+    const response = await fetch(
+      `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=b4803697ce5a4dfca6ee6eac8f249f62`
     );
-}
+    const results = await response.json();
 
-console.log(`This is The location ${locationMessage} and ${lat} and ${lon}`);
+    const myFormat=results.results[0].formatted;
+    locationMessage=myFormat.split(', ').splice(1).join(", ");
+    const userLoc = JSON.stringify(results.results[0].formatted);
+  }
+
+  function showError(error) {
+    switch (error.code) {
+      case error.PERMISSION_DENIED:
+        locationMessage="User denied the request for Geolocation.";
+        break;
+      case error.POSITION_UNAVAILABLE:
+        locationMessage="Location information is unavailable.";
+        break;
+      case error.TIMEOUT:
+        locationMessage="The request to get user location timed out.";
+        break;
+      case error.UNKNOWN_ERROR:
+        locationMessage="An unknown error occurred.";
+        break;
+    }
+  }
+  getLocation();
