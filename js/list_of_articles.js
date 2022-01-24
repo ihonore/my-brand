@@ -91,6 +91,7 @@ closeModal.addEventListener('click', () => {
 //lets first convert Image chosen file into a string url
         
 imageInput.addEventListener("click", ()=>{
+  image.style.visibility='hidden';
   image.value="";
 });
 
@@ -100,6 +101,7 @@ imageInput.addEventListener('change',function(){
 
     fileReader.addEventListener('load',() =>{
         chosenImage=fileReader.result;
+        image.value=chosenImage;
     })
     fileReader.readAsDataURL(this.files[0]);
 });
@@ -127,7 +129,6 @@ addArticleForm.addEventListener('submit', (e) => {
 
 
     var finalImageUrl=(chosenImage)?chosenImage:image.value;
-    console.log(`This is Final Image ${finalImageUrl}`);
   
       var thisArticle = {
           title: title.value,
@@ -138,7 +139,7 @@ addArticleForm.addEventListener('submit', (e) => {
           commentsCount: 0,
           likesCount: 0
       };
-      console.log(thisArticle);
+
       articles.push(thisArticle);
       localStorage.setItem('articles',JSON.stringify(articles));
 
