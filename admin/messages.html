@@ -5,8 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Messages</title>
+    <link rel='shortcut icon' type='image/png' href='/favicon-32x32.png' />
     <link rel="stylesheet" href="../css/styles.css">
     <script src="https://kit.fontawesome.com/7775d9e45e.js" crossorigin="anonymous"></script>
+    <script defer src="/js/authenticate.js"></script>
+    <script defer src="/initialize.js"></script>
 </head>
 <body>
     <section class="admin-panel">
@@ -19,58 +22,46 @@
                 <a href="/admin/list_of_articles.html"><li><i class="far fa-newspaper"></i>&nbsp;<span>My Articles</span></li></a>
                 <a href="/admin/messages.html"><li><i class="fas fa-envelope-open-text"></i>&nbsp;<span>Messages</span></li></a>
                 <a href="/admin/profile_settings.html"><li><i class="fas fa-user-cog"></i>&nbsp;<span>Settings</span></li></a>
-                <a href="#"><li><i class="fas fa-sign-out-alt"></i>&nbsp;<span>Logout</span></li></a>
+                <a class="logout"><li><i class="fas fa-sign-out-alt"></i>&nbsp;<span>Logout</span></li></a>
             </ul>
             <div class="new-article-btn">
-                <a href="add_articles.html"><button><i class="far fa-plus-square"></i>&nbsp;<span>New Article</span></button></a>
+                <a href="list_of_articles.html"><button><i class="far fa-plus-square"></i>&nbsp;<span>New Article</span></button></a>
             </div>
         </div>
         <div class="right-container">
             <header>
                 <a href="/admin/profile_settings.html"><div class="user-wrapper">
-                <p class="user">ihonore </p>
+                <p class="user"></p>
                 <div class="admin-profile-picture">
-                    <img src="../img/admin.jpg" alt="profile picture">
+                    <img alt="profile picture" class="profile-image">
                 </div>
             </div>
         </a>
             </header>
-            <div class="content">
-                <h3>Messages</h3>
-                <div class="message-card">
-                    <div class="message-wrapper">
-                        <p class="user-names">Christian Kalisa .<span class="user-email">&nbsp; ckalisa209@gmail.com</span></p>
-                        <p class="message">I would like to know the price for car rental website . . . .</p>
-                    </div>
-                    <div class="view-btn">
-                        <button>View</button>
+            <div class="confirm-overlay">
+                <div class="confirm-box">
+                    <div class="confirm-header"><img src="/icons/h-logo.png"> Confirm Your Choice</div>
+                    <div class="confirm-body">Are you sure? ⚠️</div>
+                    <div class="confirm-footer">
+                        <button id='ok' class="box-btn">Ok</button>
+                        <button id='no' class="box-btn">Cancel</button>
                     </div>
                 </div>
-                <div class="message-card">
-                    <div class="message-wrapper">
-                        <p class="user-names">Aline Irakoze .<span class="user-email"> &nbsp;irakoze1997@gmail.com</span></p>
-                        <p class="message">I was just checking if this works</p>
-                    </div>
-                    <div class="view-btn">
-                        <button>View</button>
-                    </div>
-                </div>
-                <div class="message-card">
-                    <div class="message-wrapper">
-                        <p class="user-names">Aian Jr .<span class="user-email">&nbsp; i.junior@gmail.com</span></p>
-                        <p class="message">I need a website for my business, get back to me when you se this...</p>
-                    </div>
-                    <div class="view-btn">
-                        <button>View</button>
-                    </div>
-                </div>
+            </div>
+
+            <div class="under-header">
+                <div class="content" id="messages-container">
+                    <h3>Messages</h3>
+    
+                    
+                    
+    
                 
-
-            
-
+    
+                </div>
             </div>
         </div>
     </section>
-    
+   <script src="/js/messages.js"></script> 
 </body>
 </html>

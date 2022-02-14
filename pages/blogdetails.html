@@ -5,56 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Details</title>
+    <link rel='shortcut icon' type='image/png' href='/favicon-32x32.png' />
     <link rel="stylesheet" href="../css/styles.css">
     <script src="https://kit.fontawesome.com/7775d9e45e.js" crossorigin="anonymous"></script>
 </head>
+<nav class="navbar">
+    <div class="navbar__container">
+      <a href="/index.html" id="navbar__logo"><img src="/icons/h-logo.png" alt="my logo"></a>
+      <div class="navbar__toggle" id="mobile-menu">
+        <span class="bar"></span> <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="navbar__menu">
+        <li class="navbar__item">
+          <a href="/index.html" class="navbar__links" id="home-page">Home</a>
+        </li>
+        <li class="navbar__item">
+          <a href="/index.html#about-page" class="navbar__links" id="about-page">About Me</a>
+        </li>
+        <li class="navbar__item">
+          <a href="/index.html#portfolio" class="navbar__links" id="portfolio-page"
+            >Portfolio</a>
+        </li>
+        <li class="navbar__item">
+            <a href="/index.html#contact-me" class="navbar__links" id="contact-page"
+              >Contact Me</a>
+          </li>
+          <li class="navbar__item">
+            <a href="blog.html" class="navbar__links" id="blog-page"
+              >Blog</a>
+          </li>
+          <li class="navbar__item">
+            <a href="/login.html" class="navbar__links" id="login-page"
+              >Login</a>
+          </li>
+      </ul>
+    </div>
+  </nav>
 <body>
     <section class="whole-blog-section">
-        <h1>Blog</h1>
-        <a href="/pages/blog.html" class="back-button"><h3><i class="far fa-arrow-alt-circle-left"></i>&nbsp;Go Back</h3></a>
-        <section class="blog-details-section">
-            <h2>What is Git? A Beginner's Guide to Git Version Control</h2>
-            <p id="editor">By ihonore, <span class="blog-date">22-Dec-2021</span></p>
-            <div class="blog-details-thumbnail">
-                <img src="../img/learn git thumbnail.png" alt="learn git thumbnail">
-            </div>
-           <div class="main-content">
-            <p>If you are working on a project over time, you may want to keep track of which changes were made, by whom, and when those changes were made. This becomes increasingly important if you end up having a bug in your code! Git can help you with this.</p>
-            <p>But Git can also be a bit scary and confusing when you first start learning it, so in this article I will introduce Git in a humanly understandable way. We'll cover topics such as repositories, commits, branches and much more, so let's get started!</p>   
-            <ul>
-                <h4>Here's what we'll go over in this article:</h4>
-                <li>What is Git?</li>
-                <li>What is GitHub?</li>
-                <li>How to get started using Git</li>
-                <li>How does Git track changes?</li>
-                <li>A typical Git workflow</li>
-                <li>Online course to learn Git version control</li>
-            </ul>
-            <h3>What is Git?</h3>
-            <p><strong>Git</strong> is a version control system that you download onto your computer. It is essential that you use Git if you want to collaborate with other developers on a coding project or work on your own project.</p>
-            <p>In order to check if you already have Git installed and its version on your computer you can type the command <code>git --version</code> in the terminal.</p>
-            <p>If you already have Git installed then you will see what version you have. If you don’t have Git installed you can visit the <a href="https://git-scm.com/" target="_blank">Git website</a> and easily follow the download instructions to install the correct version for your operating system.</p>
-            <h3>What is GitHub?</h3>
-            <p><strong>GitHub</strong> is a product that allows you to host your Git projects on a remote server somewhere (or in other words, in the cloud).</p>
-            <p>It's important to remember that GitHub is not Git. GitHub is just a hosting service. There are other companies who offer hosting services that do the same thing as GitHub, such as Bitbucket and GitLab.</p>
-            <button class="comment-btn">Leave a comment</button>
-           </div>
-
-        </section>
-        <section class="comments-section">
-            <h3><span class="comment-counter">4</span>&nbsp;Comments</h3>
-            <p class="commentator">Kalisa</p>
-            <p class="comment">I had trouble understanding the difference between Git and Github</p>
-            <p class="commentator">Christian</p>
-            <p class="comment">Daaamn!!! this is what i have been looking for the whole time.</p>
-            <p class="commentator">HackerN_1</p>
-            <p class="comment">Very helpful</p>
-            <p class="commentator">Brown11</p>
-            <p class="comment">Amazing!!!!</p>
-
-
-        </section>
+        <!-- <h1>Blog</h1> -->
+        <!-- <a href="/pages/blog.html" class="back-button"><h3><i class="far fa-arrow-alt-circle-left"></i>&nbsp;Go Back</h3></a> -->
+        
     </section>
-    
+<script src="/js/blogdetails.js"></script>
+<script src="/js/main.js"></script>
 </body>
 </html>

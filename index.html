@@ -6,7 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Honore's Portfolio</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7775d9e45e.js" crossorigin="anonymous"></script>
+   
 </head>
 <body>
 
@@ -26,16 +37,20 @@
               <a href="#about-me" class="navbar__links" id="about-page">About Me</a>
             </li>
             <li class="navbar__item">
-              <a href="#portfolio" class="navbar__links" id="services-page"
+              <a href="#portfolio" class="navbar__links" id="portfolio-page"
                 >Portfolio</a>
             </li>
             <li class="navbar__item">
-                <a href="#contact-me" class="navbar__links" id="services-page"
+                <a href="#contact-me" class="navbar__links" id="contact-page"
                   >Contact Me</a>
               </li>
               <li class="navbar__item">
-                <a href="/pages/blog.html" class="navbar__links" id="services-page"
+                <a href="/pages/blog.html" class="navbar__links" id="blog-page"
                   >Blog</a>
+              </li>
+              <li class="navbar__item">
+                <a href="/login.html" class="navbar__links" id="login-page"
+                  >Login</a>
               </li>
           </ul>
         </div>
@@ -44,7 +59,7 @@
  <!-- Home section -->
         <div class="hero-image" id="home">
             <div class="hero-text">
-                <img src="img/waving-hand.png" alt="waving hand">
+                <img class="wave" src="img/waving-hand.png" alt="waving hand">
                 <h1>I'm Honore IRADUKUNDA</h1>
                 <p>A software engineer</p>
                 <a href="#contact-me"><button class="hero-btn">GET IN TOUCH</button></a>
@@ -53,14 +68,15 @@
 
 <!-- About me section -->
 <section class="about-me" id="about-me">
+    <div class="about-header">
+        <h1>About <span>Me</span></h1>
+    </div>
     <div class="about_me-container">
         <div class="left-content">
             <img src="img/Profile picture.png" alt="profile picture">
         </div>
         <div class="right-content">
-            <div class="right-header">
-                <h1>About <span>Me</span></h1>
-            </div>
+            
             <div class="paragraphs">
                 <p>I have more than a year work experience in front-end and have a firm knowledge of HTML, CSS and JavaScript language and possess a good knowledge of computer software packages (frameworks and tools) that are used in today’s technology.</p>
                 <p>I am highly-motivated, result oriented, self-driven, hard-working, fast learner and constantly seeking to improve my skills. in addition to this, I adopt to the changes quickly and I am able to work well both in a team environment as well as using own initiative. I am able to work well under pressure and adhere to strict deadlines.</p>
@@ -98,14 +114,18 @@
     <div class="contacts-div" id="contact-me">
         <div class="contacts-container">
             <div class="left-contacts">
+            <a href="tel:+250789788844">
                 <div>
                    <span> <i class="fas fa-mobile-alt fa-fw"></i></span>
                    <span class="phone-email">&nbsp;(250)789 788 844</span>
                 </div>
+            </a>
+            <a href="mailto:ihonore01@gmail.com" target="_blank">
                 <div>
                     <span> <i class="far fa-envelope fa-fw"></i></i></span>
                     <span class="phone-email">&nbsp;ihonore01@gmail.com</span>
                  </div>
+            </a>
              
                 <div class="social-icons">
                     <span>
@@ -131,8 +151,9 @@
                 </div>
             </div>
             <div class="right-contacts">
-                <form action="" class="contact-form">
+                <form class="contact-form">
                     <h3>Send me a quick message</h3>
+                    <p class="contact-error"></p>
                     <div>
                         <input type="text" placeholder="Name" id="name">
                     </div>
@@ -140,9 +161,9 @@
                         <input type="text" placeholder="Email" id="email">
                     </div>
                     <div>
-                        <textarea name="message" id="message" cols="30" rows="10" placeholder="message" id="message"></textarea>
+                        <textarea name="message" id="message" cols="30" rows="6" placeholder="message" id="message"></textarea>
                     </div>
-                    <button type="submit" id="submit"><i class="fas fa-paper-plane"></i></button>  
+                    <button type="submit" id="submit"><i class="fas fa-paper-plane"></i></button>
                 </form>
             </div>
         </div>
@@ -183,5 +204,6 @@
 
 
 <script src="js/main.js"></script>
+<script src="/js/contact_me.js"></script>
 </body>
 </html>

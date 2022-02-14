@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login page</title>
+    <title>Admin Login</title>
+    <link rel='shortcut icon' type='image/png' href='/favicon-32x32.png' />
     <link rel="stylesheet" href="../css/styles.css">
     <script src="https://kit.fontawesome.com/7775d9e45e.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <script defer src="/js/login.js"></script>
 </head>
 <body>
     <section class="login-section">
@@ -19,22 +22,28 @@
                 <div>
                     <h3><span>Login</span>&nbsp;as Admin</h3>
                 </div>
+              <form action="/admin/index.html" class="login-form">
+                
                 <div class="input-div">
                     <i class="far fa-user"></i>
-                    <input type="text" placeholder="Enter your username or email">
+                    <input type="text" placeholder="Enter your username or email" id="username" class="input">
+                    <div class= "error-message"></div>
                 </div>
+                <div class="error-message"></div>
                 <div class="input-div">
                     <i class="fas fa-unlock-alt"></i>
-                    <input type="text" placeholder="Enter your password">
+                    <input type="password" placeholder="Enter your password" id="password" class="input">
+                    <div class="error-message"></div>
                 </div>
+                
                 <div class="btn">
-                    <a href="/admin/index.html"><button>LOGIN</button></a>
+                    <button class="login-btn button" type="submit">LOGIN</button>
                 </div>
+              </form>
 
             </div>
         </div>
       </div>
-    </section>
-    
+      </section>
 </body>
 </html>

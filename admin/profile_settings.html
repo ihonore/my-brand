@@ -7,6 +7,8 @@
     <title>Profile settings</title>
     <link rel="stylesheet" href="../css/styles.css">
     <script src="https://kit.fontawesome.com/7775d9e45e.js" crossorigin="anonymous"></script>
+    <script defer src="/js/authenticate.js"></script>
+    <script defer src="/initialize.js"></script>
 </head>
 <body>
     <section class="admin-panel">
@@ -19,33 +21,35 @@
                 <a href="/admin/list_of_articles.html"><li><i class="far fa-newspaper"></i>&nbsp;<span>My Articles</span></li></a>
                 <a href="/admin/messages.html"><li><i class="fas fa-envelope-open-text"></i>&nbsp;<span>Messages</span></li></a>
                 <a href="/admin/profile_settings.html"><li><i class="fas fa-user-cog"></i>&nbsp;<span>Settings</span></li></a>
-                <a href="#"><li><i class="fas fa-sign-out-alt"></i>&nbsp;<span>Logout</span></li></a>
+                <a class="logout"><li><i class="fas fa-sign-out-alt"></i>&nbsp;<span>Logout</span></li></a>
             </ul>
             <div class="new-article-btn">
-                <a href="add_articles.html"><button><i class="far fa-plus-square"></i>&nbsp;<span>New Article</span></button></a>
+                <a href="list_of_articles.html"><button><i class="far fa-plus-square"></i>&nbsp;<span>New Article</span></button></a>
             </div>
         </div>
         <div class="right-container">
             <header>
                 <a href="/admin/profile_settings.html"><div class="user-wrapper">
-                <p class="user">ihonore </p>
+                <p class="user"></p>
                 <div class="admin-profile-picture">
-                    <img src="../img/admin.jpg" alt="profile picture">
+                    <img  alt="profile picture" class="profile-image">
                 </div>
             </div>
         </a>
             </header>
-            <div class="content">
+            <div class="content profile-content">
                 <h3>Profile Settings</h3>
             <div class="profile-settings">
-                <div class="profile-wrapper">
+                <form class="profile-wrapper" id="profile-form">
                     <div class="profile">
                         <div class="picture">
-                            <img src="/img/admin.jpg" alt="profile picture">
+                            <img  alt="profile picture" class="profile-image">
                         </div>
                         <label for="upload-photo">Change Profile Picture</label>
                         <input type="file" name="photo" id="upload-photo" />
+                        
                     </div>
+                    <p class="profile-error-message"></p>
                     <p>Change username:</p>
                     <div>
                         <input type="text" name="username" id="username">        
@@ -56,16 +60,16 @@
                     </div>
                     <p>New Password:</p>
                     <div>
-                        <input type="password" name="new-password" id="new-password">        
+                        <input type="password" name="new-password" id="new-password1">        
                     </div>
                     <p>Confirm New Password:</p>
                     <div>
-                        <input type="password" name="new-password" id="new-password1">        
+                        <input type="password" name="new-password" id="new-password2">        
                     </div>
                     <div class="save-changes-btn">
-                        <button>Save changes</button>
+                        <button type="submit">Save changes</button>
                     </div>
-                </div>
+                </form>
                 <div class="settings-robot">
                     <img src="/img/profile settings Robot.svg" alt="settings robot">
                 </div>
@@ -74,6 +78,6 @@
             </div>
         </div>
     </section>
-    
+    <script src="/js/profile_settings.js"></script>
 </body>
 </html>

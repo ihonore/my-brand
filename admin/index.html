@@ -5,8 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <script src="https://kit.fontawesome.com/7775d9e45e.js" crossorigin="anonymous"></script>
+    <script defer src="/js/authenticate.js"></script>
+    <script defer src="/initialize.js"></script>
 </head>
 <body>
     <section class="admin-panel">
@@ -19,57 +29,52 @@
                 <a href="/admin/list_of_articles.html"><li><i class="far fa-newspaper"></i>&nbsp;<span>My Articles</span></li></a>
                 <a href="/admin/messages.html"><li><i class="fas fa-envelope-open-text"></i>&nbsp;<span>Messages</span></li></a>
                 <a href="/admin/profile_settings.html"><li><i class="fas fa-user-cog"></i>&nbsp;<span>Settings</span></li></a>
-                <a href="#"><li><i class="fas fa-sign-out-alt"></i>&nbsp;<span>Logout</span></li></a>
+                <a class="logout"><li><i class="fas fa-sign-out-alt"></i>&nbsp;<span>Logout</span></li></a>
             </ul>
             <div class="new-article-btn">
-                <a href="add_articles.html"><button><i class="far fa-plus-square"></i>&nbsp;<span>New Article</span></button></a>
+                <a href="list_of_articles.html"><button><i class="far fa-plus-square"></i>&nbsp;<span>New Article</span></button></a>
             </div>
         </div>
         <div class="right-container">
             <header>
              <a href="/admin/profile_settings.html"><div class="user-wrapper">
-                <p class="user">ihonore </p>
+                <p class="user"></p>
                 <div class="admin-profile-picture">
-                    <img src="../img/admin.jpg" alt="profile picture">
+                    <img alt="profile picture" class="profile-image">
                 </div>
             </div>
             </a>
           </header>
-          <div class="insights-wrapper">
-              <div class="visitors-card">
-                  <h2>300</h2>
-                  <p>Total Visitors</p>
-              </div>
-              <div class="blogs-card">
-                <h2>112</h2>
-                <p>Total Blogs</p>
-            </div>
-          </div>
-            <div class="content">
-                <h3>Messages</h3>
-                <div class="message-card">
-                    <div class="message-wrapper">
-                        <p class="user-names">Christian Kalisa .<span class="user-email">&nbsp; ckalisa209@gmail.com</span></p>
-                        <p class="message">I would like to know the price for car rental website . . . .</p>
-                    </div>
-                    <div class="view-btn">
-                        <button>View</button>
-                    </div>
+          <div class="confirm-overlay">
+            <div class="confirm-box">
+                <div class="confirm-header"><img src="/icons/h-logo.png"> Confirm Your Choice</div>
+                <div class="confirm-body">Are you sure? ⚠️</div>
+                <div class="confirm-footer">
+                    <button id='ok' class="box-btn">Ok</button>
+                    <button id='no' class="box-btn">Cancel</button>
                 </div>
-                <div class="message-card">
-                    <div class="message-wrapper">
-                        <p class="user-names">Aline Irakoze .<span class="user-email"> &nbsp;irakoze1997@gmail.com</span></p>
-                        <p class="message">I was just checking if this works</p>
-                    </div>
-                    <div class="view-btn">
-                        <button>View</button>
-                    </div>
-                </div>
-                    
-
             </div>
         </div>
+          <div class="under-header">
+            <div class="insights-wrapper">
+                <div class="visitors-card">
+                    <h2 id="messages-count"></h2>
+                    <p>Total Messages</p>
+                </div>
+                <div class="blogs-card">
+                  <h2 id="blogs-count"></h2>
+                  <p>Total Articles</p>
+              </div>
+            </div>
+              <div class="content" id="dashboard-messages">
+                  <h3>Messages</h3>
+                 
+                      
+  
+              </div>
+          </div>
+          </div>
     </section>
-    
+    <script src="/js/dashboard.js"></script>
 </body>
 </html>
