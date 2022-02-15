@@ -656,17 +656,17 @@ textarea::placeholder {
 
 /*  ///////////////// Blog page section ////////////////////////*/
 .blog-section {
-	top: 0;
+	padding-top: 15vh;
 	font-family: "Poppins", sans-serif;
 	background: rgb(241, 246, 252);
 	padding-bottom: 5rem;
 }
-.blog-section h1 {
+/* .blog-section h1 {
 	text-align: center;
 	font-size: 2rem;
 	color: rgba(56, 53, 53, 0.45);
 	padding: 2rem;
-}
+} */
 .back-button {
 	text-align: center;
 	text-decoration: none;
@@ -731,6 +731,24 @@ textarea::placeholder {
 .comments i {
 	font-size: 1.2rem;
 	color: rgba(56, 53, 53, 0.45);
+}
+.loading {
+	width: 50px;
+	height: 50px;
+	border: 5px solid rgb(120, 165, 248);
+	border-radius: 50%;
+	margin: 6rem auto;
+	border-top: 5px solid #fff;
+	animation: rotate 0.8s infinite linear;
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(30deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }
 .likes i:hover,
 .comments i:hover {
@@ -1804,9 +1822,15 @@ input[type="text"]:focus {
 .fa-eye {
 	color: rgb(48, 46, 46);
 }
-.fa-edit {
+.fa-edit,
+.fa-spinner {
 	color: rgba(23, 98, 167, 1);
 }
+.fa-spin {
+	color: white;
+	margin-left: 0.5rem;
+}
+
 .fa-trash-alt {
 	color: rgba(231, 76, 60, 1);
 }

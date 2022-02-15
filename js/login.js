@@ -2,6 +2,7 @@
 const loginForm = document.querySelector(".login-form");
 const emailInput=document.getElementById('username')
 const passwordInput=document.getElementById('password')
+const loginBtn=document.getElementById('login-btn')
 
 
 loginForm.addEventListener("submit", (e) => {
@@ -63,6 +64,8 @@ loginForm.addEventListener("submit", (e) => {
   }
 
   function logIn() {
+	loginBtn.innerHTML +=
+	'<i class="fas fa-spinner fa-spin"></i>'
 	  fetch('https://ihonore-api-deploy.herokuapp.com/api/v1/users/login', {
 		method: 'POST',
 		headers: {
@@ -75,10 +78,17 @@ loginForm.addEventListener("submit", (e) => {
 	})
 	.then(res => res.json())
 	.then(data => {
+	  loginBtn.innerHTML='LOGIN'
 	  if (data.status == 200){
 		localStorage.setItem('token', data.accessToken)
 		localStorage.setItem('currentUser', emailInput.value)
 		window.location = "/admin/index.html";
+	  }
+	  if(data.status==403){
+		loginBtn.innerHTML='LOGIN'
+		const errorMessage = emailInput.parentElement.querySelector(".error-message");
+		errorMessage.innerText ="Email/Password combination is not valid";
+		
 	  }
 	  console.log(data)
 	})

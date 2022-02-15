@@ -1,6 +1,7 @@
 //Display added articles to my blog
 const blogContainer=document.getElementById('blog-section');
 const readyToAppend=document.createElement('div');
+const loading = document.querySelector('.loading');
 
 async function renderArticle(){
 
@@ -48,11 +49,11 @@ async function renderArticle(){
 </div>`
 
 myArticles+=template;
-console.log(`IDDDDDDDDDDDD ${id}`)
  }
 
     readyToAppend.innerHTML=myArticles
     blogContainer.appendChild(readyToAppend);
+    loading.style.display = 'none';
 }
 
 //Likes function

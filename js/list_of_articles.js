@@ -1,5 +1,6 @@
 var allArticles=document.querySelector('.all-articles');
 let readyToAppend=document.createElement('div');
+const loading = document.querySelector('.loading');
 
 let img=document.createElement('img');
 
@@ -52,8 +53,8 @@ async function renderArticles(){
             </div>
             <div class="actions">
                 <p>Created ${finalDate}</p>
-                <span onClick='editArticle("${element._id}")'><i class="fas fa-edit"></i></span>
-                <span onClick='deleteArticle("${element._id}")'><i class="far fa-trash-alt"></i></span>
+                <span  onClick='editArticle("${element._id}")'><i class="fas fa-edit"></i></span>
+                <span  onClick='deleteArticle("${element._id}")'><i class="far fa-trash-alt"></i></span>
             </div>
         </div>    
     </a>`
@@ -62,6 +63,7 @@ async function renderArticles(){
     })
     readyToAppend.innerHTML=myArticles
     allArticles.appendChild(readyToAppend);
+    loading.style.display = 'none';
 }
 
 
@@ -212,6 +214,7 @@ renderArticles();
 // console.log(articleId);
 
 //update article function
+
 async function editArticle(articleId){
 
     const response= await fetch(`https://ihonore-api-deploy.herokuapp.com/api/v1/articles/${articleId}`)
