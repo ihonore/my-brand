@@ -18,6 +18,7 @@ async function displayMessages(){
     let myMessages="";
     let length=data.length;
     updateMessageCount(length);
+    
     //if we only have one message in the database
     if (length==1){
         let template=`
@@ -117,10 +118,20 @@ updateBlogsCount();
 const profileImage=document.querySelector('.profile-image');
 const displayUser=document.querySelector('.user');
 
-function displayProfile(){
-    let userProfile =JSON.parse(localStorage.getItem('account'));
-    let profilephoto=userProfile.profilePicture;
+async function displayProfile(){
+
+    let userEmail =localStorage.getItem('currentUser');
+
+    const response= await fetch(`https://ihonore-api-deploy.herokuapp.com/api/v1/users/${userEmail}`,{
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    const user= await response.json()
+    const userProfile=user.data;
+
+    let profilephoto=userProfile.picture;
     displayUser.textContent=userProfile.username;
-    profileImage.setAttribute('src',profilephoto);
+    profileImage.setAttribute('src', profilephoto);
  }
  displayProfile();

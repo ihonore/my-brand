@@ -9,8 +9,10 @@ const oldPassword=document.getElementById('old-password');
 const newPassword=document.getElementById('new-password1');
 const confirmPassword=document.getElementById('new-password2');
 
-let fetchedUser=JSON.parse(localStorage.getItem('account'));
-userName.value=fetchedUser.username;
+const token = localStorage.getItem('token')
+
+// let fetchedUser=JSON.parse(localStorage.getItem('account'));
+// userName.value=fetchedUser.username;
 profileForm.addEventListener('submit',(e)=>{
     e.preventDefault();
     console.log(fetchedUser);
@@ -140,12 +142,24 @@ profileForm.addEventListener('submit',(e)=>{
           fileReader.readAsDataURL(this.files[0]);
       });
 
-function displayProfile(){
-   let userProfile =JSON.parse(localStorage.getItem('account'));
-   let profilephoto=userProfile.profilePicture;
-   displayUser.textContent=userProfile.username;
-   profileImage.forEach(image =>{
-   image.setAttribute('src',profilephoto);
-})
-}
-displayProfile();
+    //display username and profile picture
+
+    async function displayProfile(){
+
+        let userEmail =localStorage.getItem('currentUser');
+    
+        const response= await fetch(`https://ihonore-api-deploy.herokuapp.com/api/v1/users/${userEmail}`,{
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        const user= await response.json()
+        const userProfile=user.data;
+        
+        let profilePhoto=userProfile.picture;
+        displayUser.textContent=userProfile.username;
+        profileImage.forEach(profile=>{
+            profile.setAttribute('src', profilePhoto);
+        })
+     }
+     displayProfile();
