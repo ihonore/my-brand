@@ -1,112 +1,84 @@
-class Login {
-	constructor(form, fields) {
-		this.form = form;
-		this.fields = fields;
-		this.validateonSubmit();
+
+const loginForm = document.querySelector(".login-form");
+const emailInput=document.getElementById('username')
+const passwordInput=document.getElementById('password')
+
+
+loginForm.addEventListener("submit", (e) => {
+	e.preventDefault();
+	validateOnSubmit();
+	logIn();
+	
+  });
+  
+  function validateOnSubmit() {
+
+	const email = emailInput.value.trim();
+	const password = passwordInput.value.trim();
+  
+	if(emailInput.type=='text'){
+		if(email =='') {
+
+			setErrorStatus(emailInput, 'Email cannot be blank');
+	
+		  }
+		  else if(!isEmail(email)){
+			  setErrorStatus(emailInput, 'Please enter a valid email address');
+		  } 
+		  
+		  else{
+			  setSuccessStatus(emailInput);
+		  }
+	}
+    if(passwordInput.type=='password'){
+		if (password === "") {
+			setErrorStatus(passwordInput, "Password cannot be blank");
+		  } else {
+			setSuccessStatus(passwordInput);
+		  }
+	}
+	
 	}
 
-	validateonSubmit() {
-		let self = this;
-		this.form.addEventListener("submit", (e) => {
-			e.preventDefault();
-			var error = 0;
-			self.fields.forEach((field) => {
-				const input = document.querySelector(`#${field}`);
-				if (self.validateFields(input) == false) {
-					error++;
-				}
-			});
-			if (error == 0) {
-				localStorage.setItem("auth", 1);
-				this.form.submit();
+	function setErrorStatus(input, message) {
+
+		const errorMessage = input.parentElement.querySelector(".error-message");
+		errorMessage.innerText = message;
+		input.classList.add("input-error");
+	  }
+
+	function setSuccessStatus(input) {
+
+		const errorMessage = input.parentElement.querySelector(".error-message");
+		if (errorMessage) {
+			errorMessage.innerText = "";
 			}
-		});
-	}
+		input.classList.remove("input-error");
+	  }
+  
+  function isEmail(emailAddress) {
+  
+	const regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	return regEx.test(emailAddress);
+  }
 
-	validateFields(field) {
-		if (field.value.trim() === "") {
-			this.setStatus(
-				field,
-				`${field.previousElementSibling.innerText}This field cannot be blank`,
-				"error"
-			);
-			return false;
-		}
-		else {
-			let credentials=JSON.parse(localStorage.getItem('account'));
-			if (field.type == "password") {
-				if (field.value.length < 8) {
-					this.setStatus(
-						field,
-						`${field.previousElementSibling.innerText} Invalid Credentials`,
-						"error"
-					);
-					return false;
-				} else if(field.value!=credentials.password){
-					this.setStatus(
-						field,
-						`${field.previousElementSibling.innerText} Invalid credentials`,
-						"error"
-					);
-					return false;
-				}
-				else {
-					this.setStatus(field, null, "success");
-					return true;
-				}
-			}
-			if(field.type=="text"){
-				if(field.value==credentials.username || field.value==credentials.email){
-					this.setStatus(field, null, "success");
-					return true;
-				}
-				else{
-					this.setStatus(
-						field,
-						`${field.previousElementSibling.innerText} Invalid Credentials `,
-						"error"
-					);
-					return false;
-				}
-			}
-			else {
-				this.setStatus(field, null, "success");
-				return true;
-			}
-		}
-	}
-
-	setStatus(field, message, status) {
-		const errorMessage = field.parentElement.querySelector(".error-message");
-
-		if (status == "success") {
-			if (errorMessage) {
-				errorMessage.innerText = "";
-			}
-			field.classList.remove("input-error");
-		}
-
-		if (status == "error") {
-			errorMessage.innerText = message;
-			field.classList.add("input-error");
-		}
-	}
-}
-
-const form = document.querySelector(".login-form");
-
-if (form) {
-	const fields = ["username", "password"];
-	const validator = new Login(form, fields);
-}
-
-//Setting Admin password
-let user=JSON.parse(localStorage.getItem('account'));
-if(!user){
-let account={username:'Admin',
-email:"ihonore01@gmail.com",
-password:'password',
-profilePicture:'profile'
-}
-localStorage.setItem('account',JSON.stringify(account));
+  function logIn() {
+	  fetch('https://ihonore-api-deploy.herokuapp.com/api/v1/users/login', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({
+			email: emailInput.value,
+			password: passwordInput.value
+		})
+	})
+	.then(res => res.json())
+	.then(data => {
+	  if (data.status == 200){
+		localStorage.setItem('token', data.accessToken)
+		window.location = "/admin/index.html";
+	  }
+	  console.log(data)
+	})
 }

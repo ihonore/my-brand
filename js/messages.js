@@ -1,22 +1,28 @@
-//This file will fetch messages from local storage and display them
+//This file will fetch messages from the database and display them
 const messagesContainer=document.querySelector('#messages-container');
 let readyToAppend=document.createElement('div');
 
-function displayMessages(){
-    var newMessages;
-    retrivedMessages = JSON.parse( localStorage.getItem('messages'));
-        if(retrivedMessages){
-            newMessages=retrivedMessages;
-    
-        }else{
-            newMessages = [];
+const token = localStorage.getItem('token')
+
+async function displayMessages(){
+
+    const response= await fetch("https://ihonore-api-deploy.herokuapp.com/api/v1/queries",{
+        headers: {
+            'Authorization': `Bearer ${token}`
         }
+    })
+    const queries= await response.json()
+    const data=queries.data;
+    console.log(data);
+
     let myMessages="";
-    newMessages.forEach((element,index) => {
+    data.forEach((element,index) => {
     let template=`
     <div class="message-card">
         <div class="message-wrapper">
-            <p class="user-names">${element.userName} .<span class="user-email">&nbsp; <a href="mailto:${element.email}?subject=REPLY FROM WEBSITE">${element.email}</a></span><span class="location"><span>Location :</span> ${element.location}</span> </p>
+            <p class="user-names">${element.senderName} .<span class="user-email">&nbsp; 
+            <a href="mailto:${element.email}?subject=REPLY FROM WEBSITE">${element.email}</a>
+            </span><span class="location"><span>Location :</span> ${element.location}</span> </p>
              <details>
                 <summary>${element.message.substring(0,60)} -</summary>
                     <span class="message">${element.message.substring(50)}</span>

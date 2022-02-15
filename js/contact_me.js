@@ -22,34 +22,38 @@ contactForm.addEventListener('submit',(e)=>{
             errorMessage.innerHTML='Please enter a valid email address';
         }
 
-        //Check if Name doen not contain numbers or special characters 
+        //Check if Name does not contain numbers or special characters 
         //and check if name is not less than 3 characters
 
        else if(!(/[a-zA-Z]/g.test(user.value)) || user.value.trim().length<3){
             errorMessage.innerHTML='Enter a valid name';
         }
     else{
-        let fetchedMessages=JSON.parse(localStorage.getItem('messages'));
-        if(fetchedMessages){
-            completeMessages=fetchedMessages;
-        }
-        else{
-            completeMessages=[];
-        }
-        // getLocation();
+
         let thisMessage={
-            userName: user.value,
+            senderName: user.value,
             email: email.value,
             message: message.value,
             location: locationMessage
         }
-        console.log(thisMessage);
-        completeMessages.push(thisMessage);
-        localStorage.setItem('messages',JSON.stringify(completeMessages));
-        errorMessage.style.cssText='color:white; background:lightgreen;border-radius:5px; text-align:center;padding:2px;';
-        errorMessage.innerHTML='Thank you for messaging me!';
-        errorMessage.classList.toggle('open-modal');
 
+        fetch('https://ihonore-api-deploy.herokuapp.com/api/v1/queries', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(thisMessage)
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data.status == 200){
+            errorMessage.style.cssText='color:white; background:lightgreen;border-radius:5px; text-align:center;padding:2px;';
+            errorMessage.innerHTML='Thank you for messaging me!';
+            errorMessage.classList.toggle('open-modal');
+          }
+          console.log(data)
+        })
+   
         setTimeout(() => {
             errorMessage.classList.toggle('open-modal');
             contactForm.reset();
