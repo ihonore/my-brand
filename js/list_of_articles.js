@@ -25,7 +25,7 @@ localStorage.setItem('localid',localID);
 
 //Display articles function
 
-function renderArticle(){
+function renderArticles(){
     retrievedArticles = JSON.parse( localStorage.getItem('articles'));
         if( retrievedArticles=== null){
             articles = [];
@@ -150,7 +150,7 @@ addArticleForm.addEventListener('submit', (e) => {
       addArticleBtn.setAttribute('disabled','disabled');
       addArticleBtn.style.cursor='wait';
       addArticleBtn.style.background='#72b4ee';
-      renderArticle();
+      renderArticles();
 
 
     alert.style.display = 'block';
@@ -190,11 +190,11 @@ confirmOkBtn.addEventListener('click',()=>{
   console.log(retrieved);
   localStorage.setItem('articles',JSON.stringify(retrieved));
   confirmDiv.style.display="none";
-  renderArticle();
+  renderArticles();
 });
 }
 
-renderArticle();
+renderArticles();
 
 //update article function
 function editArticle(index){

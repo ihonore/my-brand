@@ -10,12 +10,14 @@ async function renderArticle(){
 
     let commentsCount=0;
     let date="";
+    
 
     let myArticles="";
     for(let i=articles.length-1; i>=0; i--) {
 
         date=articles[i].create_at.split('T')
         let finalDate=`${date[0]} / ${date[1].substring(0,5)}`
+        let id=articles[i]._id;
 
         commentsCount=articles[i].comments.length;
 
@@ -30,15 +32,15 @@ async function renderArticle(){
         </div>
         <div class="blog-body">
             <h3>${articles[i].title}</h3>
-            <p>${articles[i].content.substring(0,250)}&nbsp;<a href="/pages/blogdetails.html?id=${i}" class="read-more">Read more</a></p>   
+            <p>${articles[i].content.substring(0,250)}&nbsp;<a href="/pages/blogdetails.html?id=${id}" class="read-more">Read more</a></p>   
         </div>
         <div class="likes-and-comments">
             <div class="likes">
-              <span onclick="like(${i})"><i class="far fa-thumbs-up"></i></span>
+              <span onclick="like(${id})"><i class="far fa-thumbs-up"></i></span>
               <span class="likes-counter">${0}</span>
            </div>
            <div class="comments" id="commentsSection">
-           <a href="/pages/blogdetails.html?id=${i}#commentsSection"> <span  onclick="comment(${i})"><i class="far fa-comments"></i></span></a>
+           <a href="/pages/blogdetails.html?id=${id}#commentsSection"> <span  onclick="comment(${id})"><i class="far fa-comments"></i></span></a>
                <span class="comments-counter">${commentsCount}</span>
             </div>
         </div>
@@ -46,6 +48,7 @@ async function renderArticle(){
 </div>`
 
 myArticles+=template;
+console.log(`IDDDDDDDDDDDD ${id}`)
  }
 
     readyToAppend.innerHTML=myArticles
