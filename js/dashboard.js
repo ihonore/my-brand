@@ -18,7 +18,7 @@ async function displayMessages(){
     let myMessages="";
     let length=data.length;
     updateMessageCount(length);
-    
+
     //if we only have one message in the database
     if (length==1){
         let template=`
@@ -30,7 +30,7 @@ async function displayMessages(){
                             <span class="message">${data[0].message.substring(50)}</span>
                      </details>
                 </div>
-                <div class="delete-btn" onClick='deleteMessage(${0})'>
+                <div class="delete-btn" onClick='deleteMessage("${data[0]._id}")'>
                     <span><i class="far fa-trash-alt"></i></span>
                 </div>
             </div>`
@@ -51,7 +51,7 @@ async function displayMessages(){
                             <span class="message">${data[i].message.substring(50)}</span>
                      </details>
                 </div>
-                <div class="delete-btn" onClick='deleteMessage(${i})'>
+                <div class="delete-btn" onClick='deleteMessage("${data[i]._id}")'>
                     <span><i class="far fa-trash-alt"></i></span>
                 </div>
             </div>`
@@ -74,25 +74,31 @@ const confirmOkBtn=document.getElementById('ok');
 const confirmCancelBtn=document.getElementById('no');
 
 
-function deleteMessage(index){
+function deleteMessage(id){
 confirmDiv.style.display="block";
     
 confirmCancelBtn.addEventListener('click',(e)=>{
     e.preventDefault();
     confirmDiv.style.display="none";
 });
-confirmOkBtn.addEventListener('click',()=>{
-    let retrieved=JSON.parse(localStorage.getItem('messages'));
-    retrieved.splice(index,1);
-    console.log(retrieved);
-    localStorage.setItem('messages',JSON.stringify(retrieved));
+confirmOkBtn.addEventListener('click',async ()=>{
+    const response= await fetch(`https://ihonore-api-deploy.herokuapp.com/api/v1/queries/${id}`,{
+                method:'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+
+        const fetchedResponse= await response.json()
+        console.log(fetchedResponse);
+
     confirmDiv.style.display="none";
     displayMessages();
     updateMessageCount();
 });
 }
 
-//updating Totals messages and Total numbers
+//updating Totals messages and Total Articles
 const messageCount=document.querySelector('#messages-count');
 const articleCount=document.querySelector('#blogs-count');
 
@@ -100,17 +106,21 @@ function updateMessageCount(count){
      messageCount.innerHTML=count;
 }
 
-function updateBlogsCount(){
-   let articlesCount=0;
-   let retrivedArticles = JSON.parse( localStorage.getItem('articles'));
-        if(retrivedArticles){
-            articlesCount=retrivedArticles.length;
-            articleCount.innerHTML=articlesCount;
-    
-        }else{
-            articleCount.innerHTML=articlesCount;
-        }
-    
+async function updateBlogsCount(){
+
+    const response= await fetch("https://ihonore-api-deploy.herokuapp.com/api/v1/articles")
+    const fetchedResponse= await response.json()
+    const articles=fetchedResponse.data;
+
+    let articlesCount
+   if(articles.length>0){
+        articlesCount=articles.length
+   }else{
+        articlesCount=0
+   }
+
+    articleCount.innerHTML=articlesCount;
+       
 }
 // updateMessageCount();
 updateBlogsCount();

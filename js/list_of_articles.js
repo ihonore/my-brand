@@ -7,6 +7,8 @@ let h4=document.createElement('h4');
 let p=document.createElement('p');
 let bodyParagraph=document.createElement('p');
 
+const token = localStorage.getItem('token')
+
 
 //formatting date and time of when article is added
 let t = new Date();
@@ -25,31 +27,33 @@ localStorage.setItem('localid',localID);
 
 //Display articles function
 
-function renderArticles(){
-    retrievedArticles = JSON.parse( localStorage.getItem('articles'));
-        if( retrievedArticles=== null){
-            articles = [];
-    
-        }else{
-            articles = retrievedArticles;
-        }
+async function renderArticles(){
+    const response= await fetch("https://ihonore-api-deploy.herokuapp.com/api/v1/articles")
+    const fetchedResponse= await response.json()
+    const articles=fetchedResponse.data;
+
     let myArticles="";
-    articles.forEach((element,index) => {
+    let date=""
+    articles.forEach((element) => {
+
+        date=element.create_at.split('T')
+        let finalDate=`${date[0]} / ${date[1].substring(0,5)}`
+
     let template=`<a href="#" data-id=${
-            index
+            element._id
           } >
         <div class="article-wrapper">
             <div class="article-thumbnail">
-                <img src="${element.imageUrl}" alt="Article Image">
+                <img src="${element.image}" alt="Article Image">
             </div>
             <div class="article">
                 <h4>${element.title}</h4>
-                <p>${element.body.substring(0,200)} . . .</p>  
+                <p>${element.content.substring(0,200)} . . .</p>  
             </div>
             <div class="actions">
-                <p>Created ${element.timePublished}</p>
-                <span onClick='editArticle(${index})'><i class="fas fa-edit"></i></span>
-                <span onClick='deleteArticle(${index})'><i class="far fa-trash-alt"></i></span>
+                <p>Created ${finalDate}</p>
+                <span onClick='editArticle("${element._id}")'><i class="fas fa-edit"></i></span>
+                <span onClick='deleteArticle("${element._id}")'><i class="far fa-trash-alt"></i></span>
             </div>
         </div>    
     </a>`
@@ -167,31 +171,39 @@ addArticleForm.addEventListener('submit', (e) => {
   });
 
 
-  //delete article function
 
-  const editBtns = document.querySelectorAll('.fa-edit');
-  const deleteBtns = document.querySelectorAll('.fa-trash-alt');
+
+const editBtns = document.querySelectorAll('.fa-edit');
+const deleteBtns = document.querySelectorAll('.fa-trash-alt');
 
 const confirmDiv=document.querySelector('.overlay-articles');
 const confirmOkBtn=document.getElementById('ok');
 const confirmCancelBtn=document.getElementById('no');
 
+  //delete article function
 
-function deleteArticle(index){
-confirmDiv.style.display="block";
-    
-confirmCancelBtn.addEventListener('click',(e)=>{
-    e.preventDefault();
-    confirmDiv.style.display="none";
-});
-confirmOkBtn.addEventListener('click',()=>{
-  let retrieved=JSON.parse(localStorage.getItem('articles'));
-  retrieved.splice(index,1);
-  console.log(retrieved);
-  localStorage.setItem('articles',JSON.stringify(retrieved));
-  confirmDiv.style.display="none";
-  renderArticles();
-});
+function deleteArticle(id){
+
+    confirmDiv.style.display="block";
+        
+    confirmCancelBtn.addEventListener('click',(e)=>{
+        e.preventDefault();
+        confirmDiv.style.display="none";
+    });
+    confirmOkBtn.addEventListener('click',async()=>{
+
+        const response= await fetch(`https://ihonore-api-deploy.herokuapp.com/api/v1/articles/${id}`,{
+            method:'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+
+        const fetchedResponse= await response.json()
+        console.log(fetchedResponse);
+        confirmDiv.style.display="none";
+        renderArticles();
+    });
 }
 
 renderArticles();

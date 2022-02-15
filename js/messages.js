@@ -16,7 +16,7 @@ async function displayMessages(){
     console.log(data);
 
     let myMessages="";
-    data.forEach((element,index) => {
+    data.forEach((element) => {
     let template=`
     <div class="message-card">
         <div class="message-wrapper">
@@ -28,7 +28,7 @@ async function displayMessages(){
                     <span class="message">${element.message.substring(50)}</span>
              </details>
         </div>
-        <div class="delete-btn" onClick='deleteMessage(${index})'>
+        <div class="delete-btn" onClick='deleteMessage("${element._id}")'>
             <span><i class="far fa-trash-alt"></i></span>
         </div>
     </div>`
@@ -48,22 +48,26 @@ const confirmOkBtn=document.getElementById('ok');
 const confirmCancelBtn=document.getElementById('no');
 
 
-function deleteMessage(index){
-confirmDiv.style.display="block";
-    
-confirmCancelBtn.addEventListener('click',(e)=>{
-    e.preventDefault();
-    confirmDiv.style.display="none";
-});
-confirmOkBtn.addEventListener('click',()=>{
-    let retrieved=JSON.parse(localStorage.getItem('messages'));
-    retrieved.splice(index,1);
-    console.log(retrieved);
-    localStorage.setItem('messages',JSON.stringify(retrieved));
-    confirmDiv.style.display="none";
-    displayMessages();
-    updateMessageCount();
-});
+function deleteMessage(id){
+    confirmDiv.style.display="block";
+        
+    confirmCancelBtn.addEventListener('click',(e)=>{
+        e.preventDefault();
+        confirmDiv.style.display="none";
+    });
+    confirmOkBtn.addEventListener('click', async()=>{
+        const response= await fetch(`https://ihonore-api-deploy.herokuapp.com/api/v1/queries/${id}`,{
+                method:'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+
+        const fetchedResponse= await response.json()
+        console.log(fetchedResponse);
+        confirmDiv.style.display="none";
+        displayMessages();
+    });
 }
 
 
