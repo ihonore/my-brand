@@ -22,8 +22,8 @@ var time = `${date}-${month}-${year}, ${hours}:${minutes}`;
 
 var retrievedArticles;
 var articles;
-var localID=0;
-localStorage.setItem('localid',localID);
+// var localID=0;
+// localStorage.setItem('localid',localID);
 
 //Display articles function
 
@@ -39,9 +39,9 @@ async function renderArticles(){
         date=element.create_at.split('T')
         let finalDate=`${date[0]} / ${date[1].substring(0,5)}`
 
-    let template=`<a href="#" data-id=${
+    let template=`<a href="#" data-id="${
             element._id
-          } >
+          }" >
         <div class="article-wrapper">
             <div class="article-thumbnail">
                 <img src="${element.image}" alt="Article Image">
@@ -208,32 +208,66 @@ function deleteArticle(id){
 
 renderArticles();
 
+// let articleId = updateArticleBtn.parentNode.parentNode.getAttribute("data-id");
+// console.log(articleId);
+
 //update article function
-function editArticle(index){
+async function editArticle(articleId){
+
+    const response= await fetch(`https://ihonore-api-deploy.herokuapp.com/api/v1/articles/${articleId}`)
+    const fetchedResponse= await response.json()
+    const article=fetchedResponse.data;
+
+
     addArticleBtn.style.display = 'none';
-    let retrieved=JSON.parse(localStorage.getItem('articles'));
-    title.value = retrieved[index].title;
-    description.value = retrieved[index].body;
-    image.value = retrieved[index].imageUrl;
+    
+    title.value = article.title;
+    description.value = article.content;
+    image.value = article.image;
     formContainer.classList.toggle('open-modal');
     
     finalImageUrl=(chosenImage)?chosenImage:image.value;
     console.log(`this is final imageUrl ${finalImageUrl}`);
-    updateArticleBtn.addEventListener('click',(e)=>{
+
+    updateArticleBtn.addEventListener('click',async (e)=>{
         e.preventDefault();
-     retrieved[index].title=title.value;
-     retrieved[index].body=description.value;
-     retrieved[index].imageUrl=image.value;
-     localStorage.setItem('articles',JSON.stringify(retrieved));
+        let updatedArticle={}
 
-    alert.style.display = 'block';
-    alert.style.backgroundColor='lightgreen';
-    alert.innerHTML = `Article updated successfully`;
+        updatedArticle.title=title.value;
+        updatedArticle.body=description.value;
+        updatedArticle.imageUrl=image.value;
 
-    setTimeout(() => {
-    formContainer.classList.toggle('open-modal');
-    window.location.reload();
-    }, 2000);
+        fetch(`https://ihonore-api-deploy.herokuapp.com/api/v1/articles/${articleId}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify(updatedArticle)
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data.status == 200){
+            alert.style.display = 'block';
+            alert.style.backgroundColor='lightgreen';
+            alert.innerHTML = `Article updated successfully`;
+          }
+          
+          formContainer.classList.toggle('open-modal');
+          renderArticles();
+
+        })
+
+        /////
+     
+    //  localStorage.setItem('articles',JSON.stringify(retrieved));
+
+    
+
+    // setTimeout(() => {
+    // formContainer.classList.toggle('open-modal');
+    // window.location.reload();
+    // }, 2000);
      
     })
 }

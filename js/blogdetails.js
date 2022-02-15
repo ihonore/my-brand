@@ -66,7 +66,7 @@ else{
 }
 }
 
-renderArticle();
+renderArticle()
 
 const commentForm=document.getElementById('comment_form1');
 const commentInput=document.getElementById('comment1');
@@ -74,16 +74,37 @@ const nameInput=document.getElementById('name1');
 const commentBtn=document.getElementById('comment-btn');
 const commentsReadyToAppend=document.createElement('div');
 
-// commentForm.addEventListener('submit', (e) => {
+
+// commentBtn.addEventListener('submit', (e) => {
+    
 //     e.preventDefault();
 //     let comment={
-//         commentator:nameInput.value,
+//         commenter:nameInput.value,
 //         comment:commentInput.value
 //     };
-//     articles[id].comments.push(comment);
-//     articles[id].commentsCount+=1;
-//     renderComments();
-//     window.location.reload();
+//     fetch(`https://ihonore-api-deploy.herokuapp.com/api/v1/comments/${id}`, {
+//           method: 'POST',
+//           headers: {
+//             'Content-Type': 'application/json',
+//           },
+//           body: JSON.stringify(comment)
+//         })
+//         .then(res => res.json())
+//         .then(() => {
+//             renderComments();
+
+//         })
+
+//     //////
+//     // e.preventDefault();
+//     // let comment={
+//     //     commentator:nameInput.value,
+//     //     comment:commentInput.value
+//     // };
+//     // articles[id].comments.push(comment);
+//     // articles[id].commentsCount+=1;
+//     // renderComments();
+//     // window.location.reload();
 // });
 
 async function renderComments(){
