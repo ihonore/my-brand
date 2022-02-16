@@ -15,6 +15,7 @@ class Auth {
 
 	logOut() {
 		localStorage.removeItem("token");
+		localStorage.removeItem('currentUser');
 		window.location.replace("/login.html");
 	}
 }

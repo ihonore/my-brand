@@ -1,6 +1,7 @@
 //This file will fetch messages from the database and display them
 const messagesContainer=document.querySelector('#messages-container');
 let readyToAppend=document.createElement('div');
+const loading = document.querySelector('.loading');
 
 const token = localStorage.getItem('token')
 
@@ -37,6 +38,7 @@ async function displayMessages(){
     })
     readyToAppend.innerHTML=myMessages;
     messagesContainer.appendChild(readyToAppend);
+    loading.style.display = 'none';
 }
 
 displayMessages();
