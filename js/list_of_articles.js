@@ -10,21 +10,7 @@ let bodyParagraph=document.createElement('p');
 
 const token = localStorage.getItem('token')
 
-
-//formatting date and time of when article is added
-let t = new Date();
-let date = ('0' + t.getDate()).slice(-2);
-let month = ('0' + (t.getMonth() + 1)).slice(-2);
-let year = t.getFullYear();
-let hours = ('0' + t.getHours()).slice(-2);
-let minutes = ('0' + t.getMinutes()).slice(-2);
-let seconds = ('0' + t.getSeconds()).slice(-2);
-var time = `${date}-${month}-${year}, ${hours}:${minutes}`;
-
-var retrievedArticles;
 var articles;
-// var localID=0;
-// localStorage.setItem('localid',localID);
 
 //Display articles function
 
@@ -76,7 +62,6 @@ const addArticleForm = document.querySelector('.add-article-wrapper');
 const title = document.querySelector('#article_title');
 const description = document.querySelector('#article_content');
 const image = document.querySelector('#media-url');
-// const imageInput=document.getElementById('chosen-image');
 const imageInput=document.getElementById("chosen-image");
 const addArticleBtn = document.querySelector('.add-btn');
 const alert = document.querySelector('.alert');
@@ -93,26 +78,11 @@ closeModal.addEventListener('click', () => {
     formContainer.classList.toggle('open-modal');
   });
 
-
-//lets first convert Image chosen file into a string url
         
 imageInput.addEventListener("click", ()=>{
   image.style.visibility='hidden';
   image.value="";
 });
-
-// var chosenImage;
-// imageInput.addEventListener('change',function(){
-//     const fileReader= new FileReader();
-
-//     fileReader.addEventListener('load',() =>{
-//         chosenImage=fileReader.result;
-//         image.value=chosenImage;
-//     })
-//     fileReader.readAsDataURL(this.files[0]);
-// });
-
-//Add aticle when form is submitted and validated
 
 addArticleForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -151,80 +121,11 @@ addArticleForm.addEventListener('submit', async (e) => {
             window.location.reload();
             }, 2000);
         })
-
-
-
-  
-      // let result = await response.json();
-
-      // if(result.status==200){
-        // alert.style.display = 'block';
-        // alert.innerHTML = `Article added successfully`;
-        // addArticleBtn.innerHTML = 'Add Article';
-        // addArticleBtn.removeAttribute('disabled');
-
-      //   setTimeout(() => {
-        //   formContainer.classList.toggle('open-modal');
-        //   window.location.reload()
-        // }, 2000);
-
-      // }
-      
-  
-
-        // retrievedArticles = JSON.parse( localStorage.getItem('articles'));
-        // if( retrievedArticles=== null){
-        //     articles = [];
-    
-        // }else{
-        //     articles = retrievedArticles;
-        // }
-
-
-    // var finalImageUrl=(chosenImage)?chosenImage:image.value;
-  
-      // var thisArticle = {
-      //     title: title.value,
-      //     imageUrl: finalImageUrl,
-      //     body: description.value,
-      //     timePublished:time,
-      //     comments: [],
-      //     commentsCount: 0,
-      //     likesCount: 0
-      // };
-
-      // articles.push(thisArticle);
-      // localStorage.setItem('articles',JSON.stringify(articles));
-
-      // retrievedArticles=JSON.parse(localStorage.getItem('articles'));
-      // console.log(retrievedArticles);
-      
-      // addArticleBtn.innerHTML += '&nbsp;<i class="fas fa-spinner fa-spin"></i>';
-      // addArticleBtn.setAttribute('disabled','disabled');
-      // addArticleBtn.style.cursor='wait';
-      // addArticleBtn.style.background='#72b4ee';
-      // renderArticles();
-
-
-    // alert.style.display = 'block';
-    // alert.innerHTML = `Article added successfully`;
-    // addArticleBtn.innerHTML = 'Add Article';
-    // addArticleBtn.removeAttribute('disabled');
-  
-    //close modal when successful added
-    // setTimeout(() => {
-    //     formContainer.classList.toggle('open-modal');
-    //     window.location.reload();
-    //   }, 2000);
     }
   });
 
-
-
-
 const editBtns = document.querySelectorAll('.fa-edit');
 const deleteBtns = document.querySelectorAll('.fa-trash-alt');
-
 const confirmDiv=document.querySelector('.overlay-articles');
 const confirmOkBtn=document.getElementById('ok');
 const confirmCancelBtn=document.getElementById('no');
@@ -239,8 +140,8 @@ function deleteArticle(id){
         e.preventDefault();
         confirmDiv.style.display="none";
     });
-    confirmOkBtn.addEventListener('click',async()=>{
-
+    confirmOkBtn.addEventListener('click', async()=>{
+      confirmOkBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
         const response= await fetch(`https://ihonore-api-deploy.herokuapp.com/api/v1/articles/${id}`,{
             method:'DELETE',
             headers: {
@@ -250,15 +151,13 @@ function deleteArticle(id){
 
         const fetchedResponse= await response.json()
         console.log(fetchedResponse);
+        confirmOkBtn.innerHTML = 'Ok';
         confirmDiv.style.display="none";
         renderArticles();
     });
 }
 
 renderArticles();
-
-// let articleId = updateArticleBtn.parentNode.parentNode.getAttribute("data-id");
-// console.log(articleId);
 
 //update article function
 
@@ -275,9 +174,6 @@ async function editArticle(articleId){
     description.value = article.content;
     image.value = article.image;
     formContainer.classList.toggle('open-modal');
-    
-    // finalImageUrl=(chosenImage)?chosenImage:image.value;
-    // console.log(`this is final imageUrl ${finalImageUrl}`);
 
     updateArticleBtn.addEventListener('click',async (e)=>{
         e.preventDefault();
@@ -285,10 +181,6 @@ async function editArticle(articleId){
         updateArticleBtn.innerHTML += '<i class="fas fa-spinner fa-spin"></i>';
         updateArticleBtn.setAttribute('disabled','disabled');
         updateArticleBtn.style.background='#72b4ee';
-
-        // updatedArticle.title=title.value;
-        // updatedArticle.body=description.value;
-        // updatedArticle.imageUrl=image.value;
 
         fetch(`https://ihonore-api-deploy.herokuapp.com/api/v1/articles/${articleId}`, {
           method: 'PATCH',
@@ -312,18 +204,6 @@ async function editArticle(articleId){
             formContainer.classList.toggle('open-modal');
             window.location.reload();
             }, 2000);
-        })
-
-        /////
-     
-    //  localStorage.setItem('articles',JSON.stringify(retrieved));
-
-    
-
-    // setTimeout(() => {
-    // formContainer.classList.toggle('open-modal');
-    // window.location.reload();
-    // }, 2000);
-     
+        })   
     })
 }

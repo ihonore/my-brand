@@ -56,6 +56,7 @@ function deleteMessage(id){
         confirmDiv.style.display="none";
     });
     confirmOkBtn.addEventListener('click', async()=>{
+        confirmOkBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
         const response= await fetch(`https://ihonore-api-deploy.herokuapp.com/api/v1/queries/${id}`,{
                 method:'DELETE',
                 headers: {
@@ -65,6 +66,7 @@ function deleteMessage(id){
 
         const fetchedResponse= await response.json()
         console.log(fetchedResponse);
+        confirmOkBtn.innerHTML = 'Ok';
         confirmDiv.style.display="none";
         displayMessages();
     });
