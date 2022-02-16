@@ -53,8 +53,8 @@ async function renderArticles(){
             </div>
             <div class="actions">
                 <p>Created ${finalDate}</p>
-                <span  onClick='editArticle("${element._id}")'><i class="fas fa-edit"></i></span>
-                <span  onClick='deleteArticle("${element._id}")'><i class="far fa-trash-alt"></i></span>
+                <span title="Edit" onClick='editArticle("${element._id}")'><i class="fas fa-edit"></i></span>
+                <span title="Delete" onClick='deleteArticle("${element._id}")'><i class="far fa-trash-alt"></i></span>
             </div>
         </div>    
     </a>`
@@ -101,22 +101,22 @@ imageInput.addEventListener("click", ()=>{
   image.value="";
 });
 
-var chosenImage;
-imageInput.addEventListener('change',function(){
-    const fileReader= new FileReader();
+// var chosenImage;
+// imageInput.addEventListener('change',function(){
+//     const fileReader= new FileReader();
 
-    fileReader.addEventListener('load',() =>{
-        chosenImage=fileReader.result;
-        image.value=chosenImage;
-    })
-    fileReader.readAsDataURL(this.files[0]);
-});
+//     fileReader.addEventListener('load',() =>{
+//         chosenImage=fileReader.result;
+//         image.value=chosenImage;
+//     })
+//     fileReader.readAsDataURL(this.files[0]);
+// });
 
 //Add aticle when form is submitted and validated
 
-addArticleForm.addEventListener('submit', (e) => {
+addArticleForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-  
+   
     //check if all fields are filled
     if (!title.value || !description.value || !(image.value || imageInput.value)) {
       alert.style.display = 'block';
@@ -124,51 +124,98 @@ addArticleForm.addEventListener('submit', (e) => {
       alert.style.color = '#fff';
       alert.innerHTML = `Please fill all the fields`;
     } else {
-
-        retrievedArticles = JSON.parse( localStorage.getItem('articles'));
-        if( retrievedArticles=== null){
-            articles = [];
-    
-        }else{
-            articles = retrievedArticles;
-        }
-
-
-    var finalImageUrl=(chosenImage)?chosenImage:image.value;
-  
-      var thisArticle = {
-          title: title.value,
-          imageUrl: finalImageUrl,
-          body: description.value,
-          timePublished:time,
-          comments: [],
-          commentsCount: 0,
-          likesCount: 0
-      };
-
-      articles.push(thisArticle);
-      localStorage.setItem('articles',JSON.stringify(articles));
-
-      retrievedArticles=JSON.parse(localStorage.getItem('articles'));
-      console.log(retrievedArticles);
-      
       addArticleBtn.innerHTML += '&nbsp;<i class="fas fa-spinner fa-spin"></i>';
       addArticleBtn.setAttribute('disabled','disabled');
-      addArticleBtn.style.cursor='wait';
       addArticleBtn.style.background='#72b4ee';
-      renderArticles();
+
+      await fetch('https://ihonore-api-deploy.herokuapp.com/api/v1/articles', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`
+      },
+        body: new FormData(addArticleForm)
+      })
+      .then(res => res.json())
+      .then(data => {
+          if (data.status == 200){
+            alert.style.display = 'block';
+            alert.innerHTML = `Article added successfully`;
+            addArticleBtn.innerHTML = 'Add Article';
+            addArticleBtn.removeAttribute('disabled');
+            addArticleBtn.style.background='#0c4a80'
+          }
+        })
+        .then(()=>{
+          setTimeout(() => {
+            formContainer.classList.toggle('open-modal');
+            window.location.reload();
+            }, 2000);
+        })
 
 
-    alert.style.display = 'block';
-    alert.innerHTML = `Article added successfully`;
-    addArticleBtn.innerHTML = 'Add Article';
-    addArticleBtn.removeAttribute('disabled');
+
+  
+      // let result = await response.json();
+
+      // if(result.status==200){
+        // alert.style.display = 'block';
+        // alert.innerHTML = `Article added successfully`;
+        // addArticleBtn.innerHTML = 'Add Article';
+        // addArticleBtn.removeAttribute('disabled');
+
+      //   setTimeout(() => {
+        //   formContainer.classList.toggle('open-modal');
+        //   window.location.reload()
+        // }, 2000);
+
+      // }
+      
+  
+
+        // retrievedArticles = JSON.parse( localStorage.getItem('articles'));
+        // if( retrievedArticles=== null){
+        //     articles = [];
+    
+        // }else{
+        //     articles = retrievedArticles;
+        // }
+
+
+    // var finalImageUrl=(chosenImage)?chosenImage:image.value;
+  
+      // var thisArticle = {
+      //     title: title.value,
+      //     imageUrl: finalImageUrl,
+      //     body: description.value,
+      //     timePublished:time,
+      //     comments: [],
+      //     commentsCount: 0,
+      //     likesCount: 0
+      // };
+
+      // articles.push(thisArticle);
+      // localStorage.setItem('articles',JSON.stringify(articles));
+
+      // retrievedArticles=JSON.parse(localStorage.getItem('articles'));
+      // console.log(retrievedArticles);
+      
+      // addArticleBtn.innerHTML += '&nbsp;<i class="fas fa-spinner fa-spin"></i>';
+      // addArticleBtn.setAttribute('disabled','disabled');
+      // addArticleBtn.style.cursor='wait';
+      // addArticleBtn.style.background='#72b4ee';
+      // renderArticles();
+
+
+    // alert.style.display = 'block';
+    // alert.innerHTML = `Article added successfully`;
+    // addArticleBtn.innerHTML = 'Add Article';
+    // addArticleBtn.removeAttribute('disabled');
   
     //close modal when successful added
-    setTimeout(() => {
-        formContainer.classList.toggle('open-modal');
-        window.location.reload();
-      }, 2000);
+    // setTimeout(() => {
+    //     formContainer.classList.toggle('open-modal');
+    //     window.location.reload();
+    //   }, 2000);
     }
   });
 
@@ -229,36 +276,42 @@ async function editArticle(articleId){
     image.value = article.image;
     formContainer.classList.toggle('open-modal');
     
-    finalImageUrl=(chosenImage)?chosenImage:image.value;
-    console.log(`this is final imageUrl ${finalImageUrl}`);
+    // finalImageUrl=(chosenImage)?chosenImage:image.value;
+    // console.log(`this is final imageUrl ${finalImageUrl}`);
 
     updateArticleBtn.addEventListener('click',async (e)=>{
         e.preventDefault();
-        let updatedArticle={}
+        updateArticleBtn.style.width='11rem'
+        updateArticleBtn.innerHTML += '<i class="fas fa-spinner fa-spin"></i>';
+        updateArticleBtn.setAttribute('disabled','disabled');
+        updateArticleBtn.style.background='#72b4ee';
 
-        updatedArticle.title=title.value;
-        updatedArticle.body=description.value;
-        updatedArticle.imageUrl=image.value;
+        // updatedArticle.title=title.value;
+        // updatedArticle.body=description.value;
+        // updatedArticle.imageUrl=image.value;
 
         fetch(`https://ihonore-api-deploy.herokuapp.com/api/v1/articles/${articleId}`, {
           method: 'PATCH',
           headers: {
-            'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
           },
-          body: JSON.stringify(updatedArticle)
+          body: new FormData(addArticleForm)
         })
         .then(res => res.json())
         .then(data => {
           if (data.status == 200){
+            updateArticleBtn.innerHTML = 'Update Article';
+            updateArticleBtn.style.background='#0c4a80'
+            updateArticleBtn.removeAttribute('disabled');
             alert.style.display = 'block';
             alert.style.backgroundColor='lightgreen';
             alert.innerHTML = `Article updated successfully`;
           }
-          
-          formContainer.classList.toggle('open-modal');
-          renderArticles();
-
+        }).then(()=>{
+          setTimeout(() => {
+            formContainer.classList.toggle('open-modal');
+            window.location.reload();
+            }, 2000);
         })
 
         /////
