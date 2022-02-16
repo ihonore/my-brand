@@ -71,10 +71,23 @@ renderArticle()
 const commentForm=document.getElementById('comment_form1');
 const commentsReadyToAppend=document.createElement('div');
 
+//Add comment function
+
 async function addComment(article_id){
     const commentInput=document.getElementById('comment1');
     const nameInput=document.getElementById('name1');
-
+    if(commentInput.value.trim()=="" && nameInput.value.trim()==""){
+        nameInput.style.borderBottomColor='red';
+        commentInput.style.borderBottomColor='red';
+        
+    }else if(commentInput.value.trim()==""){
+        commentInput.style.borderBottomColor='red';
+    }else if(nameInput.value.trim()==""){
+        nameInput.style.borderBottomColor='red';
+    }
+    else{
+        const commentBtn=document.getElementById('comment-btn')
+        commentBtn.innerHTML += '&nbsp;<i class="fas fa-spinner fa-spin"></i>'
         let comment={
             commenter:nameInput.value,
             comment:commentInput.value
@@ -88,9 +101,11 @@ async function addComment(article_id){
         })
         .then(res => res.json())
         .then(() => {
+            commentBtn.innerHTML="comment"
             renderArticle();
 
         })
+    }
 }
 
 
