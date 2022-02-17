@@ -46,7 +46,7 @@ contactForm.addEventListener('submit',(e)=>{
         })
         .then(res => res.json())
         .then(data => {
-          if (data.status == 200){
+          if (data.status == 201){
             errorMessage.style.cssText='color:white; background:lightgreen;border-radius:5px; text-align:center;padding:2px;';
             errorMessage.innerHTML='Thank you for messaging me!';
             errorMessage.classList.toggle('open-modal');

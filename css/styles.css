@@ -2021,6 +2021,7 @@ textarea:focus {
 	border-radius: 10px;
 	padding-top: 1rem;
 	background: white;
+	margin-top: 5vh;
 }
 .profile-wrapper p,
 label {
@@ -2070,7 +2071,7 @@ label {
 	border-radius: 10px;
 	outline: none;
 	padding: 0.7rem 1rem;
-	margin-bottom: 1.2rem;
+	margin-bottom: 2rem;
 	margin-left: 10%;
 }
 
@@ -2104,10 +2105,12 @@ input[type="password"]:focus {
 .settings-robot {
 	width: 40%;
 	margin-left: 3rem;
-	margin-top: 7%;
+	margin-top: 5%;
 }
 .profile-settings {
 	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 @media screen and (max-width: 860px) {

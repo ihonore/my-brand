@@ -107,7 +107,7 @@ addArticleForm.addEventListener('submit', async (e) => {
       })
       .then(res => res.json())
       .then(data => {
-          if (data.status == 200){
+          if (data.status == 201){
             alert.style.display = 'block';
             alert.innerHTML = `Article added successfully`;
             addArticleBtn.innerHTML = 'Add Article';
