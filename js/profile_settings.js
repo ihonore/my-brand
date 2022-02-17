@@ -59,6 +59,7 @@ profileForm.addEventListener('submit',async (e)=>{
         }).then(()=>{
           setTimeout(() => {
             error.textContent="";
+            uploadPhoto.value="";
             displayProfile()
             }, 2000);
         }) 
@@ -115,6 +116,7 @@ profileForm.addEventListener('submit',async (e)=>{
           }).then(()=>{
             setTimeout(() => {
               error.textContent="";
+              uploadPhoto.value="";
               displayProfile()
               }, 2000);
           }) 

@@ -14,12 +14,21 @@ contactForm.addEventListener('submit',(e)=>{
     if(!user.value || !email.value || !message.value){
         errorMessage.classList.toggle('open-modal');
         errorMessage.innerHTML="Please fill all the fields";
+
+        setTimeout(()=>{
+          errorMessage.classList.toggle('open-modal');
+        },2000)
+
     }else{
         //Validate email
 
         let regex= /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if(!regex.test(email.value)){
             errorMessage.innerHTML='Please enter a valid email address';
+
+            setTimeout(()=>{
+              errorMessage.classList.toggle('open-modal');
+            },2000)
         }
 
         //Check if Name does not contain numbers or special characters 
@@ -27,8 +36,14 @@ contactForm.addEventListener('submit',(e)=>{
 
        else if(!(/[a-zA-Z]/g.test(user.value)) || user.value.trim().length<3){
             errorMessage.innerHTML='Enter a valid name';
+
+            setTimeout(()=>{
+              errorMessage.classList.toggle('open-modal');
+            },2000)
         }
     else{
+
+        sendBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
 
         let thisMessage={
             senderName: user.value,
@@ -46,6 +61,8 @@ contactForm.addEventListener('submit',(e)=>{
         })
         .then(res => res.json())
         .then(data => {
+          sendBtn.innerHTML='<i class="fas fa-paper-plane"></i>'
+
           if (data.status == 201){
             errorMessage.style.cssText='color:white; background:lightgreen;border-radius:5px; text-align:center;padding:2px;';
             errorMessage.innerHTML='Thank you for messaging me!';
@@ -53,11 +70,12 @@ contactForm.addEventListener('submit',(e)=>{
           }
           console.log(data)
         })
-   
-        setTimeout(() => {
+        .then(()=>{
+          setTimeout(() => {
             errorMessage.classList.toggle('open-modal');
             contactForm.reset();
           }, 3000);
+        })
 
     }
     }
@@ -89,13 +107,13 @@ function getLocation() {
   function showError(error) {
     switch (error.code) {
       case error.PERMISSION_DENIED:
-        locationMessage="User denied the request for Geolocation.";
+        locationMessage="User denied the request";
         break;
       case error.POSITION_UNAVAILABLE:
         locationMessage="Location information is unavailable.";
         break;
       case error.TIMEOUT:
-        locationMessage="The request to get user location timed out.";
+        locationMessage="The request timed out.";
         break;
       case error.UNKNOWN_ERROR:
         locationMessage="An unknown error occurred.";
