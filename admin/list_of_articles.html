@@ -12,11 +12,12 @@
     <script defer src="/initialize.js"></script>
 </head>
 <body>
+    <div class="loading"></div>
     <section class="my-articles">
         <header>
             <ul>
                 <a href="list_of_articles.html"><li>My Articles</li></a>
-               <li><button type="submit" class="create">Create Article</button></li>
+               <li><button class="create">Create Article</button></li>
                
             </ul>
             <a href="index.html" >
@@ -40,25 +41,25 @@
         
      </div>
      <div class="form-container">
-     <form class="add-article-wrapper">
+     <form class="add-article-wrapper" id="add-article-form">
         <div class="alert"></div>
         <p>Add Title:</p>
         <div class="article-title">
-            <input type="text" id="article_title">
+            <input name="title" type="text" id="article_title">
         </div>
         <div class="article-img-body">
             <!-- <p>Your Article:</p> -->
             <div>
                 <label for="add-media" class="add-media">Add Image</label>
-                <input type="file" class="add-media" id='chosen-image' accept="image/*">
+                <input name="image" type="file" class="add-media" id='chosen-image' accept="image/*">
                 <input id="media-url" type="text" placeholder="or paste media url here if you haven't chosen a file">
             </div>
             <div>
-                <textarea name="article-body" id="article_content" cols="30" rows="15"></textarea>
+                <textarea name="content" id="article_content" cols="30" rows="15"></textarea>
             </div>
             <div class="publish-button">
-                <button class="add-btn">Save article</button>
-                <button class="update-btn">Update Article</button>
+                <button type="submit" class="add-btn">Save article</button>
+                <button type="submit" class="update-btn">Update Article</button>
                 <button class="close-modal" type="reset">Cancel</button>
 
             </div>

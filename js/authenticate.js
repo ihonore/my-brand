@@ -1,12 +1,12 @@
 class Auth {
 	constructor() {
         document.querySelector("html").style.display = "none";
-		const auth = localStorage.getItem("auth");
+		const auth = localStorage.getItem("token");
 		this.validateAuth(auth);
 	}
 
 	validateAuth(auth) {
-		if (auth != 1) {
+		if (!auth) {
 			window.location.replace("/login.html");
 		} else {
             document.querySelector("html").style.display = "block";
@@ -14,7 +14,8 @@ class Auth {
 	}
 
 	logOut() {
-		localStorage.removeItem("auth");
+		localStorage.removeItem("token");
+		localStorage.removeItem('currentUser');
 		window.location.replace("/login.html");
 	}
 }

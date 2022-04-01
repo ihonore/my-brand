@@ -1,34 +1,41 @@
 const urlParams= new URLSearchParams(window.location.search);
-const id= urlParams.get('id');
+var id= urlParams.get('id');
 const blogSection=document.querySelector('.whole-blog-section');
-
-// console.log(commentForm);
+const loading = document.querySelector('.loading');
 
 
 const readyToAppend=document.createElement('div');
 
-function renderArticle(){
-    retrievedArticles = JSON.parse( localStorage.getItem('articles'));
-        if( retrievedArticles=== null){
-            articles = [];
+async function renderArticle(){
     
-        }else{
-            articles = retrievedArticles;
-        }
-        if (articles[id]) {
+    const response= await fetch(`https://ihonore-api-deploy.herokuapp.com/api/v1/articles/${id}`)
+    const fetchedResponse= await response.json()
+    const article=fetchedResponse.data;
+
+    let commentsCount=0;
+    let date="";
+    
+
+    date=article.create_at.split('T')
+    let finalDate=`${date[0]} / ${date[1].substring(0,5)}`
+    
+
+    commentsCount=article.comments.length;
+
+        if (article) {
 
     let myArticle="";
     let template=` <article class="blog-details-section">
-            <h2>${articles[id].title}</h2>
-            <p id="editor">By ihonore, <span class="blog-date">${articles[id].timePublished}</span></p>
+            <h2>${article.title}</h2>
+            <p id="editor">By ihonore, <span class="blog-date">${finalDate}</span></p>
             <div class="blog-details-thumbnail">
-                <img src=${articles[id].imageUrl}>
+                <img src=${article.image}>
             </div>
            <div class="main-content">
-            <p>${articles[id].body}</p>
+            <p>${article.content}</p>
            
             <div class="comment-div">
-                <form class="comment-form" id="comment_form1">
+                <div class="comment-form" id="comment_form1">
                     <span>
                         <input type="text" class="comment1" id="comment1" required placeholder="Leave a comment">
                     </span>
@@ -36,21 +43,21 @@ function renderArticle(){
                         <input type="text" class="name1" id="name1" required placeholder="Your name">
                     </span>
                     <span>
-                        <button type="submit" class="comment-btn" id="comment-btn">comment</button>
+                        <button onClick='addComment("${article._id}")' class="comment-btn" id="comment-btn">comment</button>
                     </span>
-                </form>
+                </div>
             </div>
            </div>
 
         </article>
         <div class="comments-section">
-            <h3><span class="comment-counter">${articles[id].commentsCount}</span>&nbsp;Comments</h3>
+            <h3><span class="comment-counter">${commentsCount}</span>&nbsp;Comments</h3>
         </div>`
-myArticle=template;
-readyToAppend.innerHTML=myArticle;
-blogSection.appendChild(readyToAppend);
-
-
+    myArticle=template;
+    readyToAppend.innerHTML=myArticle;
+    blogSection.appendChild(readyToAppend);
+    renderComments();
+    loading.style.display = 'none';
 
 }
 else{
@@ -59,36 +66,70 @@ else{
 }
 }
 
-renderArticle();
+renderArticle()
+
 const commentForm=document.getElementById('comment_form1');
-const commentsSection=document.querySelector(".comments-section");
-const commentInput=document.getElementById('comment1');
-const nameInput=document.getElementById('name1');
-const commentBtn=document.getElementById('comment-btn');
 const commentsReadyToAppend=document.createElement('div');
 
-commentForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    let comment={
-        commentator:nameInput.value,
-        comment:commentInput.value
-    };
-    articles[id].comments.push(comment);
-    articles[id].commentsCount+=1;
-    renderComments();
-    window.location.reload();
-});
+//Add comment function
 
-function renderComments(){
-    var comments = ""
-            for (let i = 0; i < articles[id].comments.length; i++) { 
-              comments += `
-              <p class="commentator">${articles[id].comments[i].commentator}</p>
-              <p class="comment">${articles[id].comments[i].comment}</p>
+async function addComment(article_id){
+    const commentInput=document.getElementById('comment1');
+    const nameInput=document.getElementById('name1');
+    if(commentInput.value.trim()=="" && nameInput.value.trim()==""){
+        nameInput.style.borderBottomColor='red';
+        commentInput.style.borderBottomColor='red';
+        
+    }else if(commentInput.value.trim()==""){
+        commentInput.style.borderBottomColor='red';
+    }else if(nameInput.value.trim()==""){
+        nameInput.style.borderBottomColor='red';
+    }
+    else{
+        const commentBtn=document.getElementById('comment-btn')
+        commentBtn.innerHTML += '&nbsp;<i class="fas fa-spinner fa-spin"></i>'
+        let comment={
+            commenter:nameInput.value,
+            comment:commentInput.value
+        };
+        fetch(`https://ihonore-api-deploy.herokuapp.com/api/v1/comments/${article_id}`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(comment)
+        })
+        .then(res => res.json())
+        .then(() => {
+            commentBtn.innerHTML="comment"
+            renderArticle();
+
+        })
+    }
+}
+
+
+async function renderComments(){
+    console.log(id);
+
+    const response= await fetch(`https://ihonore-api-deploy.herokuapp.com/api/v1/comments/${id}`)
+    const fetchedResponse= await response.json()
+    const comments=fetchedResponse.data;
+
+    const commentsSection=document.querySelector(".comments-section");
+
+
+    if(comments){
+        var commentsTemp = ""
+            for (let i = 0; i < comments.length; i++) { 
+              commentsTemp += `
+              <p class="commentator">${comments[i].commenter}</p>
+              <p class="comment">${comments[i].comment}</p>
               `;
             }
- localStorage.setItem("articles", JSON.stringify(articles));
- commentsReadyToAppend.innerHTML=comments;
+
+ commentsReadyToAppend.innerHTML=commentsTemp;
  commentsSection.appendChild(commentsReadyToAppend);
+    }
+    
 }
-renderComments();
