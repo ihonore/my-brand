@@ -8,7 +8,7 @@ The backend repository of this project is [here](https://github.com/ihonore/my-b
 
 The api documentation of this project is [here](https://ihonore-api-deploy.herokuapp.com/api-docs/).
 
-## some of the screenshots
+## below are some of the screenshots
 
 # Home page
 
@@ -30,6 +30,6 @@ The api documentation of this project is [here](https://ihonore-api-deploy.herok
 
 ![screencapture-ihonore-netlify-app-pages-blog-html-2022-07-23-10_40_37](https://user-images.githubusercontent.com/79599396/185247006-5d354221-84ec-496f-9294-f443a2cc8492.png)
 
-# All messages
+# Messages page
 
 ![mssges](https://user-images.githubusercontent.com/79599396/185247164-511d0a69-7b28-4698-ae02-8cd839f30ddf.png)
