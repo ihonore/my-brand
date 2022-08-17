@@ -1,6 +1,7 @@
 # My Personal Portfolio website
 
 > This is the front-end part which was developed using html,css and vanilla javascript.
+> [link](https://ihonore.netlify.app){:target="_blank"}
 
 See the live <a href="https://ihonore.netlify.app" target="_blank">portfolio website</a> for more information.
 
