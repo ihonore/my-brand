@@ -2,11 +2,11 @@
 
 > This is the front-end part which was developed using html,css and vanilla javascript.
 
-See the live [portfolio website](https://ihonore.netlify.app/) for more information.
+See the live <a href="https://ihonore.netlify.app" target="_blank">portfolio website</a> for more information.
 
-The backend repository of this project is [here](https://github.com/ihonore/my-brand-api).
+The backend repository of this project is <a href="https://github.com/ihonore/my-brand-api" target="_blank">here</a>.
 
-The api documentation of this project is [here](https://ihonore-api-deploy.herokuapp.com/api-docs/).
+The api documentation of this project is <a href="https://ihonore-api-deploy.herokuapp.com/api-docs/" target="_blank">here</a>.
 
 ## below are some of the screenshots
 
