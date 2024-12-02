@@ -1,76 +1,76 @@
-//This file will be grabbing queries(messages) from clients and store them to local storage
+//This file will be grabbing queries(messages) from clients and store them to the database
 
-const contactForm =document.querySelector('.contact-form');
-const user=document.getElementById('name');
-const email=document.getElementById('email');
-const message=document.getElementById('message');
-const sendBtn=document.getElementById('submit');
-const errorMessage=document.querySelector('.contact-error');
+const contactForm = document.querySelector('.contact-form');
+const user = document.getElementById('name');
+const email = document.getElementById('email');
+const message = document.getElementById('message');
+const sendBtn = document.getElementById('submit');
+const errorMessage = document.querySelector('.contact-error');
 var locationMessage;
 
 var completeMessages;
-contactForm.addEventListener('submit',(e)=>{
-    e.preventDefault();
-    if(!user.value || !email.value || !message.value){
+contactForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (!user.value || !email.value || !message.value) {
+    errorMessage.classList.toggle('open-modal');
+    errorMessage.innerHTML = "Please fill all the fields";
+
+    setTimeout(() => {
+      errorMessage.classList.toggle('open-modal');
+    }, 2000)
+
+  } else {
+    //Validate email
+
+    let regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!regex.test(email.value)) {
+      errorMessage.innerHTML = 'Please enter a valid email address';
+
+      setTimeout(() => {
         errorMessage.classList.toggle('open-modal');
-        errorMessage.innerHTML="Please fill all the fields";
+      }, 2000)
+    }
 
-        setTimeout(()=>{
-          errorMessage.classList.toggle('open-modal');
-        },2000)
+    //Check if Name does not contain numbers or special characters 
+    //and check if name is not less than 3 characters
 
-    }else{
-        //Validate email
+    else if (!(/[a-zA-Z]/g.test(user.value)) || user.value.trim().length < 3) {
+      errorMessage.innerHTML = 'Enter a valid name';
 
-        let regex= /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if(!regex.test(email.value)){
-            errorMessage.innerHTML='Please enter a valid email address';
+      setTimeout(() => {
+        errorMessage.classList.toggle('open-modal');
+      }, 2000)
+    }
+    else {
 
-            setTimeout(()=>{
-              errorMessage.classList.toggle('open-modal');
-            },2000)
-        }
+      sendBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
 
-        //Check if Name does not contain numbers or special characters 
-        //and check if name is not less than 3 characters
+      let thisMessage = {
+        senderName: user.value,
+        email: email.value,
+        message: message.value,
+        location: locationMessage
+      }
 
-       else if(!(/[a-zA-Z]/g.test(user.value)) || user.value.trim().length<3){
-            errorMessage.innerHTML='Enter a valid name';
-
-            setTimeout(()=>{
-              errorMessage.classList.toggle('open-modal');
-            },2000)
-        }
-    else{
-
-        sendBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-
-        let thisMessage={
-            senderName: user.value,
-            email: email.value,
-            message: message.value,
-            location: locationMessage
-        }
-
-        fetch('https://ihonore-api-deploy.herokuapp.com/api/v1/queries', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(thisMessage)
-        })
+      fetch('https://ihonore-api-deploy.herokuapp.com/api/v1/queries', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(thisMessage)
+      })
         .then(res => res.json())
         .then(data => {
-          sendBtn.innerHTML='<i class="fas fa-paper-plane"></i>'
+          sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i>'
 
-          if (data.status == 201){
-            errorMessage.style.cssText='color:white; background:lightgreen;border-radius:5px; text-align:center;padding:2px;';
-            errorMessage.innerHTML='Thank you for messaging me!';
+          if (data.status == 201) {
+            errorMessage.style.cssText = 'color:white; background:lightgreen;border-radius:5px; text-align:center;padding:2px;';
+            errorMessage.innerHTML = 'Thank you for messaging me!';
             errorMessage.classList.toggle('open-modal');
           }
           console.log(data)
         })
-        .then(()=>{
+        .then(() => {
           setTimeout(() => {
             errorMessage.classList.toggle('open-modal');
             contactForm.reset();
@@ -78,46 +78,51 @@ contactForm.addEventListener('submit',(e)=>{
         })
 
     }
-    }
+  }
 })
 
 
 //Lets get user's geolocation
 
 function getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition, showError);
-    } else {
-      console.log("The Browser Does not Support Geolocation");
-    }
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else {
+    console.log("The Browser Does not Support Geolocation");
   }
+}
 
-  async function showPosition(position) {
-    const { latitude, longitude } = position.coords;
-    const response = await fetch(
-      `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=b4803697ce5a4dfca6ee6eac8f249f62`
-    );
-    const results = await response.json();
+async function showPosition(position) {
+  const { latitude, longitude } = position.coords;
+  // Note: For demo purposes, the API key is hardcoded here.
+  // In a production application, API keys should never be hardcoded
+  // and should be stored securely, such as in environment variables or a server-side proxy.
+  // However, this key is restricted to requests only from the domain "https://ihonore.netlify.app".
+  // I chose not to upgrade the Netlify plan to use environment variables for this demo.
+  const response = await fetch(
+    `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=bbc00fb3709440cab7f6f8097ee8d4bf`
+  );
+  const results = await response.json();
 
-    const myFormat=results.results[0].formatted;
-    locationMessage=myFormat.split(', ').splice(1).join(", ");
-    const userLoc = JSON.stringify(results.results[0].formatted);
+  const myFormat = results.results[0].formatted;
+  locationMessage = myFormat.split(', ').splice(1).join(", ");
+  const userLoc = JSON.stringify(results.results[0].formatted);
+}
+
+function showError(error) {
+  switch (error.code) {
+    case error.PERMISSION_DENIED:
+      locationMessage = "User denied the request";
+      break;
+    case error.POSITION_UNAVAILABLE:
+      locationMessage = "Location information is unavailable.";
+      break;
+    case error.TIMEOUT:
+      locationMessage = "The request timed out.";
+      break;
+    case error.UNKNOWN_ERROR:
+      locationMessage = "An unknown error occurred.";
+      break;
   }
-
-  function showError(error) {
-    switch (error.code) {
-      case error.PERMISSION_DENIED:
-        locationMessage="User denied the request";
-        break;
-      case error.POSITION_UNAVAILABLE:
-        locationMessage="Location information is unavailable.";
-        break;
-      case error.TIMEOUT:
-        locationMessage="The request timed out.";
-        break;
-      case error.UNKNOWN_ERROR:
-        locationMessage="An unknown error occurred.";
-        break;
-    }
-  }
-  getLocation();
+}
+getLocation();
